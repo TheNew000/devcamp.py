@@ -16,8 +16,9 @@
             })
     }
 
-    function mainController($scope){
-        $scope.test = "Hello, world."
+    function mainController($scope) {
+        $scope.loggedIn = false;
+        $scope.username = "Jackson";
     }
 
     angular.module('devcamp')
