@@ -1,0 +1,102 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="register" name="register" ng-submit="submit" method="post">
+                    <fieldset>
+                        <legend>User Registration</legend>
+                        <div class="form-group label-floating">
+                            <label class="col-md-2 control-label" for="focusedInput1">Please type your full name>
+                                <div class="col-md-10">
+                                    <input name="username" class="form-control" id="focusedInput1" type="text" tabindex="1" required>
+                                    <p class="help-block">First and Last Name.</p>
+                                </div>
+                                <div ng-messages="register.username.$error">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message-exp="['required']">
+                                        Full name is required.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="col-md-2 control-label" for="focusedInput2">Please type your email>
+                                <div class="col-md-10">
+                                    <input name="email" class="form-control" id="focusedInput2" type="email" tabindex="2" ng-pattern="/^.+@.+\..+$/" required>
+                                    <p class="help-block">example@domain.com</p>
+                                </div>
+                                <div ng-messages="register.email.$error">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message-exp="['required', 'pattern']">
+                                        Your email is required and must contain "@" with domain.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="col-md-2 control-label" for="focusedInput3">Please type your username>
+                                <div class="col-md-10">
+                                    <input name="username" class="form-control" id="focusedInput3" type="text" tabindex="3" ng-pattern="/^[a-zA-Z0-9_]*$/" ng-minlength="8" required>
+                                    <p class="help-block">This will be used to identify you.</p>
+                                </div>
+                                <div ng-messages="register.username.$error">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message-exp="['required', 'minlength', 'pattern']">
+                                        Your username cannot contain special characters and must be at least than 8 characters.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="clo-md-2 control-label" for="focusedInput4">Please type your password>
+                                <div class="col-md-10">
+                                    <input name="password" class="form-control" id="focusedInput4" type="password" tabindex="4" required>
+                                    <p class="help-block">Must be at least 8 characters</p>
+                                </div>
+                                <div ng-messages="register.password.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="col-md-2 control-label" for="focusedInput5">Please confirm your password>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="focusedInput5" type="password" tabindex="5" required>
+                                    <p class="help-block">Must match your password above</p>
+                                </div>
+                                <div ng-messages="register.password.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="select111" class="col-md-2 control-label">Title</label>
+                            <div class="col-md-10">
+                                <select name="title" id="select111" class="form-control" tabindex="6">
+                                    <option>Prospective Student</option>
+                                    <option>Bootcamp Student</option>
+                                    <option>Bootcamp Graduate</option>
+                                    <option>Instructor</option>
+                                    <option>Just Interested</option>
+                                    <option>Employer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFile" class="col-md-2 control-label">Avatar</label>
+                            <div class="col-md-10">
+                                <input type="text" readonly="" class="form-control" placeholder="Browse..." tabindex="7">
+                                <input type="file" id="inputFile" multiple="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Create Account</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
