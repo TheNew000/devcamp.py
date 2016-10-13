@@ -11,17 +11,17 @@
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="javascript:void(0)">Home</a></li>
-                <li><a href="javascript:void(0)">Community</a></li>
-                <li><a href="javascript:void(0)">Members</a></li>
+                <li class="active"><a href="javascript:void(0)"><i class="material-icons">home</i></a></li>
+                <li><a href="javascript:void(0)"><i class="material-icons">forum</i>Forum</a></li>
+                <li><a href="javascript:void(0)"><i class="material-icons">group</i></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle"
                        data-toggle="dropdown">
-                        <span ng-show="loggedIn">{{ username }}</span>
-                        <span ng-hide="loggedIn">Authenticate</span>
-                        <b class="caret"></b></a>
+                        <span ng-show="loggedIn">{{ username }}<i class="material-icons">account_circle</i></span>
+                        <span ng-hide="loggedIn"><i class="material-icons">exit_to_app</i></span>
+                        
                     <ul class="dropdown-menu" ng-show="loggedIn">
                         <li><a href="javascript:void(0)">Profile</a></li>
                         <li><a href="javascript:void(0)">Settings</a></li>
@@ -30,6 +30,7 @@
                     </ul>
                     <ul class="dropdown-menu" ng-hide="loggedIn">
                         <li><a href="javascript:void(0)" data-target="#loginModal" data-toggle="modal">Log In</a></li>
+                        <li class="divider"></li>
                         <li><a href="javascript:void(0)" data-target="#registerModal" data-toggle="modal">Register</a></li>
                     </ul>
                 </li>
