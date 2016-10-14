@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Devcamp.io</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="lib/bootstrap.min.css" rel="stylesheet">
     <link href="lib/bootstrap-material-design.min.css" rel="stylesheet">
     <link href="lib/ripples.min.css" rel="stylesheet">
 </head>
 <body ng-controller="mainCtrl">
+
+<navigation></navigation>
 
 <div ng-view></div>
 
@@ -18,14 +22,23 @@
 <script src="lib/angular-messages.min.js"></script>
 <script src="lib/angular-sanitize.min.js"></script>
 <script src="lib/angular-route.min.js"></script>
-<script src="lib/jquery.min.js"></script>
-<script src="lib/bootstrap.min.js"></script>
-<script src="lib/material.min.js"></script>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="lib/ripples.min.js"></script>
+<script src="lib/material.min.js"></script>
 
 
 <!--Main App-->
 <script src="main.js"></script>
 <script src="home/home.controller.js"></script>
+<script src="common/directives/nav/nav.controller.js"></script>
+<script src="common/directives/nav/nav.directive.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $.material.init();
+    })
+</script>
 </body>
 </html>
