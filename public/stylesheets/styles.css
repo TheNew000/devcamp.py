@@ -11,20 +11,46 @@ body {
 
 /* line 10, ../compass/sass/styles.scss */
 div#homepage-top {
+  margin-top: 15vh;
   height: 60vh;
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 13, ../compass/sass/styles.scss */
+/* line 14, ../compass/sass/styles.scss */
 div#homepage-top .hero {
   margin: 0 auto;
   text-align: center;
 }
-/* line 16, ../compass/sass/styles.scss */
+/* line 17, ../compass/sass/styles.scss */
 div#homepage-top .hero img {
   display: inline;
   max-width: 10vw;
 }
-/* line 20, ../compass/sass/styles.scss */
+/* line 21, ../compass/sass/styles.scss */
 div#homepage-top .hero h1 {
   color: #009688;
+}
+
+/* line 29, ../compass/sass/styles.scss */
+.navbar {
+  margin-bottom: 0;
+}
+
+/* line 32, ../compass/sass/styles.scss */
+.subnav {
+  background: rgba(204, 204, 204, 0.9);
+  margin: 0;
+  margin-bottom: 20px;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #E1E1E1;
+  padding: 8px 0px 0px 0px;
+}
+/* line 40, ../compass/sass/styles.scss */
+.subnav .btn-group-wrap {
+  margin-top: -4vh;
+}
+/* line 42, ../compass/sass/styles.scss */
+.subnav .btn-group-wrap button {
+  color: #009688;
+  outline: none;
 }
