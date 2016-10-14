@@ -1,10 +1,10 @@
 /**
  * Created by Jackson on 10/13/16.
  */
-(function(){
+(function () {
     angular.module('devcamp', ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'ngMessages']);
 
-    function config($routeProvider){
+    function config($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'home/home.view.html',
@@ -13,7 +13,12 @@
 
             .otherwise({
                 redirectTo: '/'
-            })
+            });
+
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+        $httpProvider.defaults.headers.common["Accept"] = "application/json";
+        $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     }
 
     function mainController($scope) {
@@ -22,6 +27,6 @@
     }
 
     angular.module('devcamp')
-        .config(['$routeProvider', config])
+        .config(['$routeProvider', '$httpProvider', config])
         .controller('mainCtrl', ['$scope', mainController])
 })();

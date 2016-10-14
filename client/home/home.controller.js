@@ -3,7 +3,7 @@
  */
 (function () {
     function homeController($scope, $http) {
-       
+
     }
 
     angular.module('devcamp')

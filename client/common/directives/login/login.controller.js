@@ -3,10 +3,15 @@
  */
 
 (function () {
-    function loginController($scope){
-
+    function loginController($scope, auth) {
+        auth.register({
+            username: "jackson",
+            password: "password"
+        }).then(function (response) {
+            console.log(response.statusText);
+        })
     }
 
     angular.module('devcamp')
-        .controller('loginCtrl', ['$scope', loginController]);
+        .controller('loginCtrl', ['$scope', 'auth', loginController]);
 })();
