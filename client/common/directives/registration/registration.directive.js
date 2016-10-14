@@ -3,7 +3,7 @@
         return {
             restrict: 'EA',
             templateUrl: 'common/directives/registration/registration.template.html',
-            controller: 'registrationCtrl'
+            controller: 'registerCtrl'
         }
     }
 

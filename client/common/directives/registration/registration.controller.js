@@ -1,8 +1,9 @@
 (function(){
-    function navController($scope){
+    function registerController($scope){
+
+   
 
     }
-
     angular.module('devcamp')
-        .controller('registrationCtrl', ['$scope', navController])
+        .controller('registerCtrl', ['$scope', registerController])
 })();

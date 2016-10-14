@@ -10,7 +10,10 @@
                 templateUrl: 'home/home.view.html',
                 controller: 'homeCtrl'
             })
-
+            .when('/members', {
+                templateUrl: 'members/members.view.html',
+                controller: 'membersCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
