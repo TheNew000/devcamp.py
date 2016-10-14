@@ -5,13 +5,23 @@ img {
 }
 body {
 	background: url("../images/background.jpg") no-repeat fixed center;
+	background-size: cover;
 }
 div#homepage-top {
-	height: 50vh;
-	background: #FFF;
-	opacity: 0.9;
-	.btn {
-		margin-top: 35vh;
-		margin-left: 2vw;
+	height: 60vh;
+	background: rgba(255,255,255,0.9);
+	.hero {
+		margin: 0 auto;
+		text-align: center;
+		img{
+			display: inline;
+			max-width: 10vw;
+		}
+		h1{
+			color: #009688;
+		}
+		.btn {
+		
+		}
 	}
 }

@@ -6,16 +6,25 @@ img {
 /* line 6, ../compass/sass/styles.scss */
 body {
   background: url("../images/background.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 
-/* line 9, ../compass/sass/styles.scss */
+/* line 10, ../compass/sass/styles.scss */
 div#homepage-top {
-  height: 50vh;
-  background: #FFF;
-  opacity: 0.9;
+  height: 60vh;
+  background: rgba(255, 255, 255, 0.9);
 }
 /* line 13, ../compass/sass/styles.scss */
-div#homepage-top .btn {
-  margin-top: 35vh;
-  margin-left: 2vw;
+div#homepage-top .hero {
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 16, ../compass/sass/styles.scss */
+div#homepage-top .hero img {
+  display: inline;
+  max-width: 10vw;
+}
+/* line 20, ../compass/sass/styles.scss */
+div#homepage-top .hero h1 {
+  color: #009688;
 }
