@@ -1,13 +1,26 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, session, redirect
 from datetime import timedelta
 from flask import make_response, request, current_app
 from functools import update_wrapper
-from flask_cors import CORS
+from flaskext.mysql import MySQL 
+import bcrypt 
+from flask_cors import CORS 
+import jwt 
 
+mysql = MySQL()
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
+app.config['MYSQL_DATABASE_USER'] = 'x'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'x'
+app.config['MYSQL_DATABASE_DB'] = 'devcamp'
+app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['CORS_HEADERS'] = 'Content-Type'
+mysql.init_app(app)
+
+conn = mysql.connect()
+cursor = conn.cursor()
+
+app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
 
 cors = CORS(app)
 
@@ -67,27 +80,74 @@ def hello_world():
 @app.route('/api/login', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def login():
-    print request.get_json()['username']
-    print request.get_json()['password']
-
-    response = jsonify({
-        "message": "OK"
-    })
-
-    return response
-
+    user_name = request.get_json()['username'].encode('utf-8')
+    req_pass = request.get_json()['password'].encode('utf-8')
+    check_username = "SELECT password FROM users WHERE username = %s"
+    cursor.execute(check_username, user_name)
+    result = cursor.fetchone()
+    if result is None:
+        return jsonify(status=401, message="Please check your user name as we can't find it in our system")
+    elif bcrypt.checkpw(req_pass, result[0].encode('utf-8')):
+        check_id = "SELECT id FROM users WHERE username = %s"
+        cursor.execute(check_id, user_name)
+        user_id = cursor.fetchone()
+        session['id'] = jwt.encode({'id': user_id[0]}, 'H4mb0l0gn4', algorithm='HS256')
+        session['username'] = user_name
+        return jsonify(status = 200, token = session['id'])
+    else:
+        return jsonify(status=401, message="Incorrect Password.  Please try again.")
 
 @app.route('/api/register', methods=['POST', 'OPTIONS'])
-@crossdomain(origin='*')
+@crossdomain(origin='*') 
 def register():
-    print request.get_json()['username']
-    print request.get_json()['password']
+    # Check to See if the Username is already taken
+    check_username = "SELECT * FROM user WHERE user_name = %s"
+    cursor.execute(check_username, request.get_json()['userName'])
+    result=cursor.fetchone()
+    if result is None:
+        full_name = request.get_json()['fullName']
+        password = request.get_json()['password'].encode('utf-8')
+        hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
+        user_name = request.get_json()['userName']
+        email = request.get_json()['email']
+        avatar = request.get_json()['avatar']
+        session['username'] = user_name
+        title = request.get_json()['title'] 
+        cursor.execute("INSERT INTO user VALUES (DEFAULT, %s, %s, DEFAULT, %s, %s, %s, %s, %s)", (full_name, title, user_name, hashed_password, avatar, email, rank_id))
+        conn.commit()
+        cursor.execute('SELECT id FROM users WHERE user_name = %s')
+        id_return = cursor.fetchone()
+        session['id'] = jwt.encode({'id': id_return[0]}, 'H4mb0l0gn4', algorithm='HS256')
+        return jsonify(status=200, token=session['id'])
+    else:
+        return jsonify(status=401, message="User Name Already In Use Please Choose Another")
 
-    response = jsonify({
-        "message": "OK"
-    })
+@app.route('/api/main', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*') 
+def main():
+    blog_feed = "SELECT author, author_id, date, article FROM blog LEFT JOIN users on blog.author = users.username ORDER BY date DESC"
+    cursor.execute(blog_feed)
+    result = cursor.fetchall()
+    if result == ():
+        return jsonify(status=401, message="We seem to be having trouble with our servers.  Please refresh the page.")
+    else:
+        return jsonify(status=200, blogs=result)
 
-    return response
+@app.route('/api/follow/<id>', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*') 
+def user_portal(id):
+    cursor.execute("INSERT INTO connections VALUES (DEFAULT, %s, %s)", (session['username'], id))
+    conn.commit()
+
+@app.route('/user_portal', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*') 
+def user_portal():
+    cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed WHERE connections.follower = %s ORDER BY date DESC", session['username'])
+    blog_feed = cursor.fetchall()
+    cursor.execute("SELECT full_name, title, username, avatar, email, rank_id FROM users WHERE username = session['username']")
+    user_data = cursor.fetchall()
+    return jsonify(status=200, blog_feed=blog_feed, user_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
