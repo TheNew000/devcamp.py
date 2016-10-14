@@ -1,0 +1,30 @@
+/* line 3, ../compass/sass/styles.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 6, ../compass/sass/styles.scss */
+body {
+  background: url("../images/background.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+
+/* line 10, ../compass/sass/styles.scss */
+div#homepage-top {
+  height: 60vh;
+  background: rgba(255, 255, 255, 0.9);
+}
+/* line 13, ../compass/sass/styles.scss */
+div#homepage-top .hero {
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 16, ../compass/sass/styles.scss */
+div#homepage-top .hero img {
+  display: inline;
+  max-width: 10vw;
+}
+/* line 20, ../compass/sass/styles.scss */
+div#homepage-top .hero h1 {
+  color: #009688;
+}

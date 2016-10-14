@@ -2,8 +2,14 @@ from flask import Flask, jsonify
 from datetime import timedelta
 from flask import make_response, request, current_app
 from functools import update_wrapper
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app)
 
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
@@ -58,5 +64,30 @@ def hello_world():
     })
 
 
+@app.route('/api/login', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def login():
+    print request.get_json()['username']
+    print request.get_json()['password']
+
+    response = jsonify({
+        "message": "OK"
+    })
+
+    return response
+
+
+@app.route('/api/register', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def register():
+    print request.get_json()['username']
+    print request.get_json()['password']
+
+    response = jsonify({
+        "message": "OK"
+    })
+
+    return response
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
