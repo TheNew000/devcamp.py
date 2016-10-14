@@ -1,0 +1,21 @@
+/* line 3, ../compass/sass/styles.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 6, ../compass/sass/styles.scss */
+body {
+  background: url("../images/background.jpg") no-repeat fixed center;
+}
+
+/* line 9, ../compass/sass/styles.scss */
+div#homepage-top {
+  height: 50vh;
+  background: #FFF;
+  opacity: 0.9;
+}
+/* line 13, ../compass/sass/styles.scss */
+div#homepage-top .btn {
+  margin-top: 35vh;
+  margin-left: 2vw;
+}
