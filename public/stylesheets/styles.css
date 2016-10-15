@@ -4,38 +4,44 @@ img {
 }
 
 /* line 6, ../compass/sass/styles.scss */
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* line 10, ../compass/sass/styles.scss */
 body {
   background: url("../images/background.jpg") no-repeat fixed center;
   background-size: cover;
 }
 
-/* line 10, ../compass/sass/styles.scss */
+/* line 14, ../compass/sass/styles.scss */
 div#homepage-top {
   margin-top: 15vh;
   height: 60vh;
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 14, ../compass/sass/styles.scss */
+/* line 18, ../compass/sass/styles.scss */
 div#homepage-top .hero {
   margin: 0 auto;
   text-align: center;
 }
-/* line 17, ../compass/sass/styles.scss */
+/* line 21, ../compass/sass/styles.scss */
 div#homepage-top .hero img {
   display: inline;
   max-width: 10vw;
 }
-/* line 21, ../compass/sass/styles.scss */
+/* line 25, ../compass/sass/styles.scss */
 div#homepage-top .hero h1 {
   color: #009688;
 }
 
-/* line 29, ../compass/sass/styles.scss */
+/* line 33, ../compass/sass/styles.scss */
 .navbar {
   margin-bottom: 0;
 }
 
-/* line 32, ../compass/sass/styles.scss */
+/* line 36, ../compass/sass/styles.scss */
 .subnav {
   background: rgba(204, 204, 204, 0.9);
   margin: 0;
@@ -45,11 +51,11 @@ div#homepage-top .hero h1 {
   border-bottom: 1px solid #E1E1E1;
   padding: 8px 0px 0px 0px;
 }
-/* line 40, ../compass/sass/styles.scss */
+/* line 44, ../compass/sass/styles.scss */
 .subnav .btn-group-wrap {
   margin-top: -4vh;
 }
-/* line 42, ../compass/sass/styles.scss */
+/* line 46, ../compass/sass/styles.scss */
 .subnav .btn-group-wrap button {
   color: #009688;
   outline: none;
