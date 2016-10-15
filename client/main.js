@@ -14,6 +14,10 @@
                 templateUrl: 'members/members.view.html',
                 controller: 'membersCtrl'
             })
+            .when('/blogs', {
+                templateUrl: 'blogs/blogs.view.html',
+                controller: 'blogsCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
