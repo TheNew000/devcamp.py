@@ -4,7 +4,7 @@ from flask import make_response, request, current_app
 from functools import update_wrapper
 from flaskext.mysql import MySQL 
 import bcrypt 
-from flask_cors import CORS 
+from flask_cors import CORS
 import jwt 
 
 mysql = MySQL()
@@ -135,18 +135,35 @@ def main():
 
 @app.route('/api/follow/<id>', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*') 
-def user_portal(id):
+def follow(id):
     cursor.execute("INSERT INTO connections VALUES (DEFAULT, %s, %s)", (session['username'], id))
     conn.commit()
 
-@app.route('/user_portal', methods=['POST', 'OPTIONS'])
-@crossdomain(origin='*') 
+@app.route('/api/user_portal', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
 def user_portal():
-    cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed WHERE connections.follower = %s ORDER BY date DESC", session['username'])
+    cursor.execute("SELECT author, author_id, date, article, category.title, description FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN category on blog.category_id = category.id LEFT JOIN connections ON users.id = connections.followed WHERE connections.follower = %s ORDER BY date DESC", session['username'])
     blog_feed = cursor.fetchall()
     cursor.execute("SELECT full_name, title, username, avatar, email, rank_id FROM users WHERE username = session['username']")
     user_data = cursor.fetchall()
-    return jsonify(status=200, blog_feed=blog_feed, user_data)
+    return jsonify(status=200, blog_feed=blog_feed, user_data=user_data)
+
+@app.route('/api/blogs', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def blogs():
+    cursor.execute("SELECT author, author_id, date, article, count(followed) as fcount FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed GROUP BY author_id, author, date, article ORDER BY fcount DESC")
+    popular_blogs = cursor.fetchall()
+    return jsonify(status=200, popular_blogs=popular_blogs)
+
+
+@app.route('/api/blog_post', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def blog_post():
+    article = request.get_json()['blog_post']
+    cursor.execute("SELECT id from users WHERE username = %s", session['username'])
+    author_id = fetchone()
+    cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s, %s)", (session['username'], article, author_id, category_id))
+    conn.commit()
 
 
 if __name__ == '__main__':
