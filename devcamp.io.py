@@ -180,7 +180,7 @@ def blog_post():
     article = request.get_json()['blog_post']
     cursor.execute("SELECT id from users WHERE username = %s", session['username'])
     author_id = fetchone()
-    cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s, %s)", (session['username'], article, author_id, category_id))
+    cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s)", (session['username'], article, author_id))
     conn.commit()
     return jsonify(status=200, message="Blog Post Successfully Added!")
 
