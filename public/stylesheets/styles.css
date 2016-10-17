@@ -60,3 +60,10 @@ div#homepage-top .hero h1 {
   color: #009688;
   outline: none;
 }
+
+/* line 52, ../compass/sass/styles.scss */
+#create-blog {
+  position: fixed;
+  padding: 30px;
+  z-index: 200;
+}
