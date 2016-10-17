@@ -10,10 +10,14 @@
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/"><i class="material-icons">home</i>&nbspHome</a></li>
-                <li><a href="javascript:void(0)"><i class="material-icons">forum</i>&nbspForum</a></li>
-                <li><a href="#/blogs"><i class="material-icons">art_track</i>&nbspBlogs</a></li>
-                <li><a href="#/members"><i class="material-icons">group</i>&nbspMembers</a></li>
+                <li ng-class="{'active': isActive('/')}"><a href="#/"><i class="material-icons">home</i>&nbspHome</a>
+                </li>
+                <li ng-class="{'active': isActive('/forum') || isActive('/forum/:id') || isActive('/topic/:id')}"><a
+                        href="#/forum"><i class="material-icons">forum</i>&nbspForum</a></li>
+                <li ng-class="{'active': isActive('/blogs')}"><a href="#/blogs"><i class="material-icons">art_track</i>&nbspBlogs</a>
+                </li>
+                <li ng-class="{'active': isActive('/members')}"><a href="#/members"><i class="material-icons">group</i>&nbspMembers</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form navbar-left form-inline" role="search">
@@ -36,6 +40,7 @@
                             <li class="divider"></li>
                             <li><a href="javascript:void(0)" data-target="#registerModal" data-toggle="modal">Register</a></li>
                         </ul>
+                    </a>
                 </li>
             </ul>
         </div>

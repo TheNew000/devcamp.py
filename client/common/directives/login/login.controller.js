@@ -4,12 +4,14 @@
 
 (function () {
     function loginController($scope, auth) {
-        auth.register({
-            username: "jackson",
-            password: "password"
-        }).then(function (response) {
-            console.log(response.statusText);
-        })
+        $scope.register = function () {
+            auth.register({
+                username: "jackson",
+                password: "password"
+            }).then(function (response) {
+                console.log(response.statusText);
+            })
+        }
     }
 
     angular.module('devcamp')
