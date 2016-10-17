@@ -148,6 +148,14 @@ def user_portal():
     user_data = cursor.fetchall()
     return jsonify(status=200, blog_feed=blog_feed, user_data)
 
+@app.route('/api/blogs', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def blogs():
+    cursor.execute("SELECT author, author_id, date, article, count(followed) as fcount FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed GROUP BY author_id, author, date, article ORDER BY fcount DESC")
+    popular_blogs = cursor.fetchall()
+    return jsonify(status=200, blog_feed=popular_blogs)
+
+
 @app.route('/api/blog_post', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def user_portal():
