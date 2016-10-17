@@ -1,5 +1,7 @@
-<div class="modal" id="createBlogModal" role="dialog">
-    <div class="modal-dialog">
+
+
+<div class="modal fade" id="createBlogModal" role="dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -16,24 +18,9 @@
                         <div class="form-group label-floating">
                             <label for="description" class="control-label">Description</label>
                             <input type="text" class="form-control" name="description" id="description">
-                            <p class="help-block">A one sentence summary of the blog</p>
                         </div>
-                        <div class="form-group label-floating">
-                            <label for="content" class="control-label">Content</label>
-                            <textarea rows="8" type="text" name="content" id="content"></textarea>
-                            <p class="help-block">Speek freely, but please keep the language respectful</p>
-                        </div>
-                        <div class="form-group label-floating">
-                            <label for="blogImage" class="control-label">Image Upload</label>
-                            <input name="blog_image" type="file" id="blogImage" multiple="" accept=".jpg,.jpeg, .png, .gif">
-                            <div class="input-group">
-                                <input type="text" readonly="" class="form-control">
-                                <span class="input-group-btn input-group-sm">
-                                  <button type="button" class="btn btn-fab btn-fab-mini">
-                                  <i class="material-icons">insert_photo</i>
-                                  </button>
-                                </span>
-                            </div>
+                        <div>
+                            <textarea id="editor" name="editor" rows="8" class="col-sm-12"></textarea>
                         </div>
                         <div class="form-group text-center">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

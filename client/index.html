@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="devcamp">
+
 <head>
     <meta charset="UTF-8">
     <title>devcamp.io</title>
@@ -10,17 +11,10 @@
     <link href="../public/lib/bootstrap-material-design.min.css" rel="stylesheet">
     <link href="../public/lib/ripples.min.css" rel="stylesheet">
     <link href="../public/stylesheets/styles.css" rel="stylesheet">
-    <!-- <link href="../public/lib/quill.core.css" rel="stylesheet">
-    <link href="../public/lib/quill.snow.css" rel="stylesheet"> -->
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 </head>
-<body ng-controller="mainCtrl">
 
-<navigation></navigation>
-<login></login>
-<registration></registration>
-
-<div ng-view></div>
-
+<<<<<<< Updated upstream
 <!--Dependencies-->
 <script src="../public/lib/angular.min.js"></script>
 <script src="../public/lib/angular-animate.js"></script>
@@ -71,8 +65,50 @@
 
 <script>
     $(document).ready(function () {
+=======
+<body ng-controller="mainCtrl">
+    <navigation></navigation>
+    <login></login>
+    <registration></registration>
+    <div ng-view></div>
+    <!--Dependencies-->
+    <script src="../public/lib/angular.min.js"></script>
+    <script src="../public/lib/angular-animate.js"></script>
+    <script src="../public/lib/angular-cookies.js"></script>
+    <script src="../public/lib/angular-messages.min.js"></script>
+    <script src="../public/lib/angular-sanitize.min.js"></script>
+    <script src="../public/lib/angular-route.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../public/lib/ripples.min.js"></script>
+    <script src="../public/lib/material.min.js"></script>
+    <script src="../public/lib/arrive.min.js"></script>
+    <!--Main App-->
+    <script src="main.js"></script>
+    <script src="common/services/auth.service.js"></script>
+    <script src="home/home.controller.js"></script>
+    <script src="members/members.controller.js"></script>
+    <script src="blogs/blogs.controller.js"></script>
+    <script src="common/directives/nav/nav.controller.js"></script>
+    <script src="common/directives/nav/nav.directive.js"></script>
+    <script src="common/directives/login/login.controller.js"></script>
+    <script src="common/directives/login/login.directive.js"></script>
+    <script src="common/directives/registration/registration.controller.js"></script>
+    <script src="common/directives/registration/registration.directive.js"></script>
+    <script src="common/directives/create_blog/create_blog.controller.js"></script>
+    <script src="common/directives/create_blog/create_blog.directive.js"></script>
+    <script>
+    $(document).ready(function() {
+>>>>>>> Stashed changes
         $.material.init();
-    })
-</script>
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest("#createBlogModal").length) {
+                e.stopImmediatePropagation();
+            }
+            
+        });
+    });
+    </script>
 </body>
+
 </html>

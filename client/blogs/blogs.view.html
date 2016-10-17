@@ -3,7 +3,7 @@
     <div class="navbar-inner">
         <div class="subnav-container">
             <div id="create-blog">
-                <a href="javascript:void(0)" data-target="#createBlogModal" data-toggle="modal" class="btn btn-default btn-fab btn-warning"><i class="material-icons">create</i></a>
+                <a href="javascript:void(0)" data-target="#createBlogModal" data-toggle="modal" class="btn btn-default btn-fab btn-warning blogModal"><i class="material-icons">create</i></a>
             </div>
             <ul class="pager subnav-pager">
                 <div class="btn-group-wrap">
@@ -22,7 +22,7 @@
 </div>
 <div id="editor-container"></div>
 <!-- //subnav -->
-<createblog></createblog>
+<createblog ng-click="openModal()"></createblog>
 <!-- Begin Body -->
 <div class="container blog-wrapper">
     <div class="row">
@@ -34,6 +34,8 @@
             </div>
             <div class="panel-body">
                 <h3>Blog About<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3>
+                <h5 class="timestamp pull-right nopadding">October 10, 2016</h5>
+                <h4 class="author">Freddie Fingas</h4>
                 <div id="blog-content">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                 </div>
