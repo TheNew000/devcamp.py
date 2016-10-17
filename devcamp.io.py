@@ -153,8 +153,26 @@ def user_portal():
 def blogs():
     cursor.execute("SELECT author, author_id, date, article, count(followed) as fcount FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed GROUP BY author_id, author, date, article ORDER BY fcount DESC")
     popular_blogs = cursor.fetchall()
-    return jsonify(status=200, popular_blogs=popular_blogs)
+    cursor.execute("SELECT author, author_id, date, article FROM blog ORDER BY date DESC")
+    blog_feed = cursor.fetchall()
+    return jsonify(status=200, popular_blogs=popular_blogs, blog_feed=blog_feed)
 
+@app.route('/api/blog_search/<category>', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def blog_search(category):
+    if category == 'FAVE':
+        cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN favorites on blog.id = category.blog_id WHERE fave = '1' AND username = %s ORDER BY date DESC", session['username'])
+    elif category == 'Custom_Search':
+        user_query = request.get_json()['user_search']
+        cursor.execute("SELECT ID, Author, Title, Description, Article, Date_Posted, Occurance, Fave_Count, (Occurance + Fave_Count) AS Total FROM (SELECT T1.id AS ID, T1.author AS Author, T1.date AS Date_Posted, T1.title AS Title, T1.description AS Description, T1.article AS Article, T1.occurance AS Occurance, COUNT(CASE WHEN fave='1' then `fave` END) AS Fave_Count FROM (SELECT id, author, date, article, (length(article) - length(replace(article,'%r',''))) / length('%r') AS occurance FROM blog ORDER BY occurance DESC) AS T1 LEFT JOIN favorites ON T1.id = favorites.blog_id WHERE T1.occurance > 0 GROUP BY ID, Occurance) AS T2 ORDER BY Total DESC", (user_query, user_query))
+    else:
+        cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN category on blog.id = favorites.blog_id WHERE %s = 'TRUE' ORDER BY date DESC", category)
+    blog_feed = cursor.fetchall()
+
+    if blog_feed is None:
+        return jsonify(status=401, message="Sorry but no results match your query!")
+    else:  
+        return jsonify(status=200, blog_feed=blog_feed)
 
 @app.route('/api/blog_post', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
@@ -164,6 +182,7 @@ def blog_post():
     author_id = fetchone()
     cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s, %s)", (session['username'], article, author_id, category_id))
     conn.commit()
+    return jsonify(status=200, message="Blog Post Successfully Added!")
 
 
 if __name__ == '__main__':
