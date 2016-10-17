@@ -5,4 +5,5 @@
     }
     angular.module('devcamp')
         .controller('blogsCtrl', ['$scope','$http', blogsController])
+  
 })();
