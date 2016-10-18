@@ -148,6 +148,11 @@ def user_portal():
     user_data = cursor.fetchall()
     return jsonify(status=200, blog_feed=blog_feed, user_data=user_data)
 
+#######################################
+#######################################
+#######################################
+# FUNCTIONALITY FOR BLOGS:
+
 @app.route('/api/blogs', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def blogs():
@@ -168,7 +173,6 @@ def blog_search(category):
     else:
         cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN category on blog.id = favorites.blog_id WHERE %s = 'TRUE' ORDER BY date DESC", category)
     blog_feed = cursor.fetchall()
-
     if blog_feed is None:
         return jsonify(status=401, message="Sorry but no results match your query!")
     else:  
@@ -180,10 +184,73 @@ def blog_post():
     article = request.get_json()['blog_post']
     cursor.execute("SELECT id from users WHERE username = %s", session['username'])
     author_id = fetchone()
-    cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s)", (session['username'], article, author_id))
-    conn.commit()
-    return jsonify(status=200, message="Blog Post Successfully Added!")
+    if author_id is None:
+        return jsonify(status=401, message="Please Log In to Interact")
+    else:
+        cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s)", (session['username'], article, author_id))
+        conn.commit()
+        return jsonify(status=200, message="Blog Post Successfully Added!")
+# END BLOG FUNCTIONALITY 
+#######################################
+#######################################
+#######################################
 
+# FUNCTIONALITY FOR FORUMS:
+@app.route('/api/forum_main', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def forum_main():
+    cursor.execute("SELECT COUNT(id) FROM category")
+    counter = fetchone();
+    display = []
+    for i in range(1, counter[0]):
+        cursor.execute("SELECT category.id AS CAT_Id, category.title AS CAt_Title, forums.id, forums.title, forums.last_post, forums.description, forums.permissions FROM forums LEFT JOIN category ON forums.cat_id = category.id WHERE cat_id = %s", i)
+        result = cursor.fetchall()
+        forum_array = []
+        for j in range(len(result)):
+            forum_array.append({"id": result[j][2], "title": result[j][3], "last_post": result[j][4], "description": result[j][5], "permissions": result[j][6]})
+        display.append({"id": result[0][0], "title": result[0][1], "forums": forum_array})
+    return jsonify(status=200, display=display)
+
+        
+
+
+
+
+        display = [
+            {
+                "id": 1, 
+                "title": "First Category", 
+                "forums": [
+                    {
+                        "id": 1, 
+                        "title": "Introductions", 
+                        "last_post": "2016-10-17 16:49:17.000000", 
+                        "description": "Introduce yo'self!", 
+                        "permissions": {
+                            "view_forum": {
+                                "admin": 1, 
+                                "member": 1, 
+                                "moderator": 1
+                            }, 
+                            "create_thread": {
+                                "admin": 1, 
+                                "member": 0, 
+                                "moderator": 0
+                            }, 
+                            "reply_to_thread": {
+                                "admin": 1, 
+                                "member": 1, 
+                                "moderator": 1
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+
+
+
+# END FORUM FUNCTIONALITY
 
 if __name__ == '__main__':
     app.run(debug=True)

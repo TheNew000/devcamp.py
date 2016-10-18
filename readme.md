@@ -1,4 +1,5 @@
-#Devcamp.io - An interactive playground for bootcamp students: past, present, and future
+#--Devcamp.io-- 
+##An interactive playground for bootcamp students: past, present, and future
 
 ###Contributors:
 Danny Arango [Github](https://github.com/TheNew000) [Website](www.dannyarango.com)
