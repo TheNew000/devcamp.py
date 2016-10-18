@@ -11,7 +11,6 @@
     <link href="../public/lib/bootstrap-material-design.min.css" rel="stylesheet">
     <link href="../public/lib/ripples.min.css" rel="stylesheet">
     <link href="../public/stylesheets/styles.css" rel="stylesheet">
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 </head>
 
 
@@ -35,8 +34,6 @@
 <script src="../public/lib/ripples.min.js"></script>
 <script src="../public/lib/material.min.js"></script>
 <script src="../public/lib/arrive.min.js"></script>
-<!-- <script src="../public/lib/quill.core.js"></script>
-<script src="../public/lib/quill.min.js"></script> -->
 
 <!--Main App-->
 <script src="main.js"></script>
@@ -64,22 +61,21 @@
 <script src="forum/thread/thread.controller.js"></script>
 <script src="members/members.controller.js"></script>
 <script src="blogs/blogs.controller.js"></script>
+<script src="blogs/create-blog/create-blog.controller.js"></script>
 <script src="common/directives/nav/nav.controller.js"></script>
 <script src="common/directives/login/login.controller.js"></script>
 <script src="common/directives/registration/registration.controller.js"></script>
 <script src="common/directives/registration/registration.directive.js"></script>
-<script src="common/directives/create_blog/create_blog.controller.js"></script>
-<script src="common/directives/create_blog/create_blog.directive.js"></script>
 
 <script>
     $(document).ready(function () {
         $.material.init();
-        $(document).on('focusin', function (e) {
-            if ($(e.target).closest("#createBlogModal").length) {
-                e.stopImmediatePropagation();
-            }
+        // $(document).on('focusin', function (e) {
+        //     if ($(e.target).closest("#createBlogModal").length) {
+        //         e.stopImmediatePropagation();
+        //     }
 
-        });
+        // });
     });
 </script>
 </body>
