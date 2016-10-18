@@ -1,10 +1,11 @@
-(function () {
-    function registerController($scope) {
-        $scope.register = function () {
-            if ($scope.password != $scope.confirm) {
+(function(){
+    function registerController($scope){
+        $scope.register = function (){
+            console.log("test")
+            if($scope.password != $scope.confirm){
                 alert('Your passwords do not match!');
-            } else {
-                $http.post(apiPath + '/register', {
+            }else{
+                $http.post('http://localhost:5000/api/register', {
                     fullName: $scope.fullname,
                     userName: $scope.username,
                     email: $scope.email,
@@ -23,7 +24,7 @@
                     console.log(response.data.message);
                 });
             }
-        };
+        }
     }
 
     angular.module('devcamp')
