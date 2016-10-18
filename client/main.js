@@ -12,17 +12,21 @@
             })
 
             .when('/forum', {
-                templateUrl: 'forum/forum.view.html',
+                templateUrl: 'forum/forum/forum.view.html',
                 controller: 'forumCtrl'
             })
 
             .when('/forum/:id', {
-                templateUrl: 'forum/thread-list.view.html',
+                templateUrl: 'forum/thread-list/thread-list.view.html',
                 controller: 'threadListCtrl'
             })
 
+            .when('/forum/:id/new', {
+                templateUrl: 'forum/new-thread/new-thread.html'
+            })
+
             .when('/topic/:id', {
-                templateUrl: 'forum/thread.view.html',
+                templateUrl: 'forum/thread/thread.view.html',
                 controller: 'threadCtrl'
             })
 

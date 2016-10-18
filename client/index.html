@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>devcamp.io</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="../public/lib/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +14,15 @@
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 </head>
 
-<<<<<<< Updated upstream
+
+<body ng-controller="mainCtrl">
+<navigation></navigation>
+<login></login>
+<registration></registration>
+
+<div ng-view></div>
+
+
 <!--Dependencies-->
 <script src="../public/lib/angular.min.js"></script>
 <script src="../public/lib/angular-animate.js"></script>
@@ -51,9 +59,9 @@
 <!--Controllers-->
 
 <script src="home/home.controller.js"></script>
-<script src="forum/forum.controller.js"></script>
-<script src="forum/thread-list.controller.js"></script>
-<script src="forum/thread.controller.js"></script>
+<script src="forum/forum/forum.controller.js"></script>
+<script src="forum/thread-list/thread-list.controller.js"></script>
+<script src="forum/thread/thread.controller.js"></script>
 <script src="members/members.controller.js"></script>
 <script src="blogs/blogs.controller.js"></script>
 <script src="common/directives/nav/nav.controller.js"></script>
@@ -65,50 +73,15 @@
 
 <script>
     $(document).ready(function () {
-=======
-<body ng-controller="mainCtrl">
-    <navigation></navigation>
-    <login></login>
-    <registration></registration>
-    <div ng-view></div>
-    <!--Dependencies-->
-    <script src="../public/lib/angular.min.js"></script>
-    <script src="../public/lib/angular-animate.js"></script>
-    <script src="../public/lib/angular-cookies.js"></script>
-    <script src="../public/lib/angular-messages.min.js"></script>
-    <script src="../public/lib/angular-sanitize.min.js"></script>
-    <script src="../public/lib/angular-route.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="../public/lib/ripples.min.js"></script>
-    <script src="../public/lib/material.min.js"></script>
-    <script src="../public/lib/arrive.min.js"></script>
-    <!--Main App-->
-    <script src="main.js"></script>
-    <script src="common/services/auth.service.js"></script>
-    <script src="home/home.controller.js"></script>
-    <script src="members/members.controller.js"></script>
-    <script src="blogs/blogs.controller.js"></script>
-    <script src="common/directives/nav/nav.controller.js"></script>
-    <script src="common/directives/nav/nav.directive.js"></script>
-    <script src="common/directives/login/login.controller.js"></script>
-    <script src="common/directives/login/login.directive.js"></script>
-    <script src="common/directives/registration/registration.controller.js"></script>
-    <script src="common/directives/registration/registration.directive.js"></script>
-    <script src="common/directives/create_blog/create_blog.controller.js"></script>
-    <script src="common/directives/create_blog/create_blog.directive.js"></script>
-    <script>
-    $(document).ready(function() {
->>>>>>> Stashed changes
         $.material.init();
-        $(document).on('focusin', function(e) {
+        $(document).on('focusin', function (e) {
             if ($(e.target).closest("#createBlogModal").length) {
                 e.stopImmediatePropagation();
             }
-            
+
         });
     });
-    </script>
+</script>
 </body>
 
 </html>
