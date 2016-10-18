@@ -12,7 +12,8 @@
             <ul class="nav navbar-nav">
                 <li ng-class="{'active': isActive('/')}"><a href="#/"><i class="material-icons">home</i>&nbspHome</a>
                 </li>
-                <li ng-class="{'active': isActive('/forum') || isActive('/forum/:id') || isActive('/topic/:id')}"><a
+                <li ng-class="{'active': isActive('/forum') || isActive('/forum/:id') || isActive('/forum/:id/new') || isActive('/topic/:id')}">
+                    <a
                         href="#/forum"><i class="material-icons">forum</i>&nbspForum</a></li>
                 <li ng-class="{'active': isActive('/blogs')}"><a href="#/blogs"><i class="material-icons">art_track</i>&nbspBlogs</a>
                 </li>
@@ -26,7 +27,7 @@
                     </div>
                 </form>
                 <li class="dropdown">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span ng-show="loggedIn">{{ username }}&nbsp<i class="material-icons">account_circle</i></span>
                         <span ng-hide="loggedIn">Login&nbsp<i class="material-icons">exit_to_app</i></span>
                         <ul class="dropdown-menu" ng-show="loggedIn">

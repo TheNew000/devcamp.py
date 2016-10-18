@@ -3,7 +3,7 @@
  */
 
 (function () {
-    function threadListController($scope) {
+    function threadListController($scope, $routeParams) {
         $scope.threads = [
             {
                 title: 'Hello, world!',
@@ -23,10 +23,12 @@
                 posts: 16,
                 views: 10
             }
-        ]
+        ];
+
+        $scope.catID = $routeParams.id;
     }
 
-    threadListController.$inject = ['$scope'];
+    threadListController.$inject = ['$scope', '$routeParams'];
     angular.module('devcamp')
         .controller('threadListCtrl', threadListController)
 })();
