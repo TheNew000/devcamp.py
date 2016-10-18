@@ -244,7 +244,7 @@ def get_forum(id):
     cursor.execute("SELECT forums.title, thread.*, users.username FROM thread LEFT JOIN forums ON forums.id = thread.forum_id LEFT JOIN users ON thread.author_id = users.id WHERE thread.forum_id = %s", id)
     result = cursor.fetchall()
 
-    if result is None:
+    if result == ():
         return jsonify(status=401, message="No results match your query")
     else:
         cursor.execute("SELECT COUNT(thread_id) FROM thread_reply WHERE thread_id = %s", id)
@@ -256,9 +256,9 @@ def get_forum(id):
             count = thread_count[0]
 
         thread_array = []
-        for i in range(1, result + 1)
+        for i in range(len(result))
             thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": count, "post_time": result[i][5]})
-        thread_object = {'forum_title': result[i][0], 'forum_id': result[i][6], 'threads': thread_array}
+        thread_object = {'forum_title': result[0][0], 'forum_id': result[0][6], 'threads': thread_array}
         return jsonify(status=200, thread_object = thread_object)
 
 
