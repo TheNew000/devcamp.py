@@ -8,5 +8,5 @@
     }
 
     angular.module('devcamp')
-        .directive('registration', registration)
+        .directive('register', registration)
 })();

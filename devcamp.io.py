@@ -2,10 +2,10 @@ from flask import Flask, jsonify, session, redirect
 from datetime import timedelta
 from flask import make_response, request, current_app
 from functools import update_wrapper
-from flaskext.mysql import MySQL 
-import bcrypt 
+from flaskext.mysql import MySQL
+import bcrypt
 from flask_cors import CORS
-import jwt 
+import jwt
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -23,6 +23,7 @@ cursor = conn.cursor()
 app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
 
 cors = CORS(app)
+
 
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
@@ -93,17 +94,18 @@ def login():
         user_id = cursor.fetchone()
         session['id'] = jwt.encode({'id': user_id[0]}, 'H4mb0l0gn4', algorithm='HS256')
         session['username'] = user_name
-        return jsonify(status = 200, token = session['id'])
+        return jsonify(status=200, token=session['id'])
     else:
         return jsonify(status=401, message="Incorrect Password.  Please try again.")
 
+
 @app.route('/api/register', methods=['POST', 'OPTIONS'])
-@crossdomain(origin='*') 
+@crossdomain(origin='*')
 def register():
     # Check to See if the Username is already taken
     check_username = "SELECT * FROM user WHERE user_name = %s"
     cursor.execute(check_username, request.get_json()['userName'])
-    result=cursor.fetchone()
+    result = cursor.fetchone()
     if result is None:
         full_name = request.get_json()['fullName']
         password = request.get_json()['password'].encode('utf-8')
@@ -112,8 +114,9 @@ def register():
         email = request.get_json()['email']
         avatar = request.get_json()['avatar']
         session['username'] = user_name
-        title = request.get_json()['title'] 
-        cursor.execute("INSERT INTO user VALUES (DEFAULT, %s, %s, DEFAULT, %s, %s, %s, %s, %s)", (full_name, title, user_name, hashed_password, avatar, email, rank_id))
+        title = request.get_json()['title']
+        cursor.execute("INSERT INTO user VALUES (DEFAULT, %s, %s, DEFAULT, %s, %s, %s, %s, %s)",
+                       (full_name, title, user_name, hashed_password, avatar, email, 3))
         conn.commit()
         cursor.execute('SELECT id FROM users WHERE user_name = %s')
         id_return = cursor.fetchone()
@@ -122,10 +125,11 @@ def register():
     else:
         return jsonify(status=401, message="User Name Already In Use Please Choose Another")
 
+
 @app.route('/api/main', methods=['POST', 'OPTIONS'])
-@crossdomain(origin='*') 
+@crossdomain(origin='*')
 def main():
-    blog_feed = "SELECT author, author_id, date, article FROM blog LEFT JOIN users on blog.author = users.username ORDER BY date DESC"
+    blog_feed = "SELECT author, author_id, date, article FROM blog LEFT JOIN users ON blog.author = users.username ORDER BY date DESC"
     cursor.execute(blog_feed)
     result = cursor.fetchall()
     if result == ():
@@ -133,20 +137,26 @@ def main():
     else:
         return jsonify(status=200, blogs=result)
 
+
 @app.route('/api/follow/<id>', methods=['POST', 'OPTIONS'])
-@crossdomain(origin='*') 
+@crossdomain(origin='*')
 def follow(id):
     cursor.execute("INSERT INTO connections VALUES (DEFAULT, %s, %s)", (session['username'], id))
     conn.commit()
 
+
 @app.route('/api/user_portal', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def user_portal():
-    cursor.execute("SELECT author, author_id, date, article, category.title, description FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN category on blog.category_id = category.id LEFT JOIN connections ON users.id = connections.followed WHERE connections.follower = %s ORDER BY date DESC", session['username'])
+    cursor.execute(
+        "SELECT author, author_id, date, article, category.title, description FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN category ON blog.category_id = category.id LEFT JOIN connections ON users.id = connections.followed WHERE connections.follower = %s ORDER BY date DESC",
+        session['username'])
     blog_feed = cursor.fetchall()
-    cursor.execute("SELECT full_name, title, username, avatar, email, rank_id FROM users WHERE username = session['username']")
+    cursor.execute(
+        "SELECT full_name, title, username, avatar, email, rank_id FROM users WHERE username = session['username']")
     user_data = cursor.fetchall()
     return jsonify(status=200, blog_feed=blog_feed, user_data=user_data)
+
 
 #######################################
 #######################################
@@ -156,41 +166,57 @@ def user_portal():
 @app.route('/api/blogs', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def blogs():
-    cursor.execute("SELECT author, author_id, date, article, count(followed) as fcount FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed GROUP BY author_id, author, date, article ORDER BY fcount DESC")
+    cursor.execute(
+        "SELECT author, author_id, date, article, count(followed) AS fcount FROM blog LEFT JOIN users ON blog.author = users.username LEFT JOIN connections ON users.id = connections.followed GROUP BY author_id, author, date, article ORDER BY fcount DESC")
     popular_blogs = cursor.fetchall()
     cursor.execute("SELECT author, author_id, date, article FROM blog ORDER BY date DESC")
     blog_feed = cursor.fetchall()
     return jsonify(status=200, popular_blogs=popular_blogs, blog_feed=blog_feed)
 
+
 @app.route('/api/blog_search/<category>', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def blog_search(category):
     if category == 'FAVE':
-        cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN favorites on blog.id = category.blog_id WHERE fave = '1' AND username = %s ORDER BY date DESC", session['username'])
+        cursor.execute(
+            "SELECT author, author_id, date, article FROM blog LEFT JOIN favorites ON blog.id = category.blog_id WHERE fave = '1' AND username = %s ORDER BY date DESC",
+            session['username'])
     elif category == 'Custom_Search':
         user_query = request.get_json()['user_search']
-        cursor.execute("SELECT ID, Author, Title, Description, Article, Date_Posted, Occurance, Fave_Count, (Occurance + Fave_Count) AS Total FROM (SELECT T1.id AS ID, T1.author AS Author, T1.date AS Date_Posted, T1.title AS Title, T1.description AS Description, T1.article AS Article, T1.occurance AS Occurance, COUNT(CASE WHEN fave='1' then `fave` END) AS Fave_Count FROM (SELECT id, author, date, article, (length(article) - length(replace(article,'%r',''))) / length('%r') AS occurance FROM blog ORDER BY occurance DESC) AS T1 LEFT JOIN favorites ON T1.id = favorites.blog_id WHERE T1.occurance > 0 GROUP BY ID, Occurance) AS T2 ORDER BY Total DESC", (user_query, user_query))
+        cursor.execute(
+            "SELECT ID, Author, Title, Description, Article, Date_Posted, Occurance, Fave_Count, (Occurance + Fave_Count) AS Total FROM (SELECT T1.id AS ID, T1.author AS Author, T1.date AS Date_Posted, T1.title AS Title, T1.description AS Description, T1.article AS Article, T1.occurance AS Occurance, COUNT(CASE WHEN fave='1' THEN `fave` END) AS Fave_Count FROM (SELECT id, author, date, article, (length(article) - length(replace(article,'%r',''))) / length('%r') AS occurance FROM blog ORDER BY occurance DESC) AS T1 LEFT JOIN favorites ON T1.id = favorites.blog_id WHERE T1.occurance > 0 GROUP BY ID, Occurance) AS T2 ORDER BY Total DESC",
+            (user_query, user_query))
     else:
-        cursor.execute("SELECT author, author_id, date, article FROM blog LEFT JOIN category on blog.id = favorites.blog_id WHERE %s = 'TRUE' ORDER BY date DESC", category)
+        cursor.execute(
+            "SELECT author, author_id, date, article FROM blog LEFT JOIN category ON blog.id = favorites.blog_id WHERE %s = 'TRUE' ORDER BY DATE DESC",
+            category)
     blog_feed = cursor.fetchall()
     if blog_feed is None:
         return jsonify(status=401, message="Sorry but no results match your query!")
-    else:  
+    else:
         return jsonify(status=200, blog_feed=blog_feed)
+
 
 @app.route('/api/blog_post', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def blog_post():
     article = request.get_json()['blog_post']
+<<<<<<< HEAD
     cursor.execute("SELECT id from users WHERE username = %s", session['username'])
+=======
+    cursor.execute("SELECT id FROM users WHERE username = %s", session['username'])
+>>>>>>> 97136eab417b5856f5a9ce508810377b4e723102
     author_id = cursor.fetchone()
     if author_id is None:
         return jsonify(status=401, message="Please Log In to Interact")
     else:
-        cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s)", (session['username'], article, author_id))
+        cursor.execute("INSERT INTO blog VALUES (DEFAULT, %s, DEFAULT, %s, %s)",
+                       (session['username'], article, author_id))
         conn.commit()
         return jsonify(status=200, message="Blog Post Successfully Added!")
-# END BLOG FUNCTIONALITY 
+
+
+# END BLOG FUNCTIONALITY
 #######################################
 #######################################
 #######################################
@@ -200,14 +226,22 @@ def blog_post():
 @crossdomain(origin='*')
 def forum_main():
     cursor.execute("SELECT COUNT(id) FROM category")
+<<<<<<< HEAD
     counter = cursor.fetchone()
+=======
+    counter = cursor.fetchone();
+>>>>>>> 97136eab417b5856f5a9ce508810377b4e723102
     display = []
     for i in range(1, counter[0]):
-        cursor.execute("SELECT category.id AS CAT_Id, category.title AS CAt_Title, forums.id, forums.title, forums.last_post, forums.description, forums.permissions FROM forums LEFT JOIN category ON forums.cat_id = category.id WHERE cat_id = %s", i)
+        cursor.execute(
+            "SELECT category.id AS CAT_Id, category.title AS CAt_Title, forums.id, forums.title, forums.last_post, forums.description, forums.permissions FROM forums LEFT JOIN category ON forums.cat_id = category.id WHERE cat_id = %s",
+            i)
         result = cursor.fetchall()
         forum_array = []
         for j in range(len(result)):
-            forum_array.append({"id": result[j][2], "title": result[j][3], "last_post": result[j][4], "description": result[j][5], "permissions": result[j][6]})
+            forum_array.append(
+                {"id": result[j][2], "title": result[j][3], "last_post": result[j][4], "description": result[j][5],
+                 "permissions": result[j][6]})
         display.append({"id": result[0][0], "title": result[0][1], "forums": forum_array})
     return jsonify(status=200, display=display)
 

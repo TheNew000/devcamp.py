@@ -7,18 +7,19 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+          type="text/css">
     <link href="../public/lib/bootstrap.min.css" rel="stylesheet">
     <link href="../public/lib/bootstrap-material-design.min.css" rel="stylesheet">
     <link href="../public/lib/ripples.min.css" rel="stylesheet">
     <link href="../public/stylesheets/styles.css" rel="stylesheet">
+
 </head>
-
-
 <body ng-controller="mainCtrl">
+
 <navigation></navigation>
 <login></login>
-<registration></registration>
-
+<register></register>
 <div ng-view></div>
 
 
@@ -29,7 +30,7 @@
 <script src="../public/lib/angular-messages.min.js"></script>
 <script src="../public/lib/angular-sanitize.min.js"></script>
 <script src="../public/lib/angular-route.min.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="../public/lib/ripples.min.js"></script>
 <script src="../public/lib/material.min.js"></script>
@@ -70,6 +71,8 @@
 <script>
     $(document).ready(function () {
         $.material.init();
+
+
         // $(document).on('focusin', function (e) {
         //     if ($(e.target).closest("#createBlogModal").length) {
         //         e.stopImmediatePropagation();
