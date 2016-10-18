@@ -49,7 +49,7 @@
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     }
 
-    function mainController($scope, $route) {
+    function mainController($scope, $route, $http) {
         $scope.loggedIn = false;
         $scope.username = "Jackson";
 
@@ -83,5 +83,5 @@
 
     angular.module('devcamp')
         .config(['$routeProvider', '$httpProvider', config])
-        .controller('mainCtrl', ['$scope', '$route', mainController])
+        .controller('mainCtrl', ['$scope', '$route', '$http', mainController])
 })();

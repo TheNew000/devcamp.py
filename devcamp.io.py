@@ -10,8 +10,8 @@ import jwt
 mysql = MySQL()
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'x'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'x'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Kaboom12!'
 app.config['MYSQL_DATABASE_DB'] = 'devcamp'
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -256,9 +256,11 @@ def get_forum(id):
             count = thread_count[0]
 
         thread_array = []
-        for i in range(1, result + 1)
+
+        for i in range(len(result)):
             thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": count, "post_time": result[i][5]})
-        thread_object = {'forum_title': result[i][0], 'forum_id': result[i][6], 'threads': thread_array}
+
+        thread_object = {'forum_title': result[0][0], 'forum_id': result[0][6], 'threads': thread_array}
         return jsonify(status=200, thread_object = thread_object)
 
 

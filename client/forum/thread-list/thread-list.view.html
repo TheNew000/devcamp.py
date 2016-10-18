@@ -1,15 +1,15 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="panel-title">Hambone</h2>
+            <h2 class="panel-title">{{forum.forum_title}}</h2>
             <a href="#/forum/{{catID}}/new" class="btn btn-fab btn-danger text-right new-thread"><i
                     class="material-icons">add</i></a>
         </div>
         <div class="panel-body">
             <div class="list-group">
-                <div ng-repeat="thread in threads">
-                    <thread-summary title="{{thread.title}}" author="{{thread.author}}" posts="{{thread.posts}}"
-                                    views="{{thread.views}}"></thread-summary>
+                <div ng-repeat="thread in forum.threads">
+                    <thread-summary title="{{thread.title}}" author="{{thread.author}}" posts="{{thread.reply_count}}"
+                                    views="45" posted="{{thread.post_time}}"></thread-summary>
                     <div class="list-group-separator"></div>
                 </div>
             </div>

@@ -3,38 +3,18 @@
  */
 
 (function () {
-    function forumController($scope) {
-        $scope.forums = [
-            {
-                title: "Introductions",
-                description: "Introduce yourself to the community"
-            },
-            {
-                title: "Another Forum",
-                description: "This is another forum. What's up bro?"
-            },
-            {
-                title: "Hambone",
-                description: "The bone of ham"
-            }
-        ];
+    function forumController($scope, forum) {
+        $scope.categories = [];
 
-        $scope.categories = [
-            {
-                title: "First Category",
-                forums: $scope.forums
-            },
-            {
-                title: "Second Category",
-                forums: $scope.forums
-            },
-            {
-                title: "Third Category",
-                forums: $scope.forums
-            }
-        ];
+        forum.getMainDisplay()
+            .then(function(response){
+                for(var i = 0; i < response.data.display.length; i++){
+                    $scope.categories.push(response.data.display[i]);
+                }
+            });
+
     }
 
     angular.module('devcamp')
-        .controller('forumCtrl', ['$scope', forumController]);
+        .controller('forumCtrl', ['$scope', 'forum', forumController]);
 })();

@@ -3,158 +3,18 @@
  */
 
 (function () {
-    function threadListController($scope, $routeParams) {
-        $scope.threads = [
-            {
-                title: 'Hello, world!',
-                author: 'Jackson',
-                posts: 16,
-                views: 10
-            },
-            {
-                title: 'Hambone',
-                author: 'Jackson',
-                posts: 16,
-                views: 10
-            },
-            {
-                title: 'Hambone',
-                author: 'Jackson',
-                posts: 16,
-                views: 10
-            }
-        ];
-
+    function threadListController($scope, $routeParams, forum) {
         $scope.catID = $routeParams.id;
+        $scope.forum = {};
+
+        forum.getThreads($scope.catID)
+            .then(function(response){
+                $scope.forum = response.data.thread_object;
+                console.log($scope.forum.threads[0].post_time);
+            })
     }
 
-    threadListController.$inject = ['$scope', '$routeParams'];
+    threadListController.$inject = ['$scope', '$routeParams', 'forum'];
     angular.module('devcamp')
         .controller('threadListCtrl', threadListController)
 })();
-
-
-var announcement_permissions = {
-    view_forum: {
-        admin: 1,
-        moderator: 1,
-        member: 1
-    },
-    create_thread: {
-        admin: 1,
-        moderators: 0,
-        members: 0
-    },
-    reply_to_thread: {
-        admin: 1,
-        moderator: 1,
-        member: 1
-    }
-};
-
-var display = [
-    {
-        id: 0,
-        title: "First Category",
-        forums: [
-            {
-                id: 0,
-                title: "Introductions",
-                description: "Introduce yourself to the community",
-                last_post: '324985458273', // Unix timestamp
-                permissions: {
-                    view_forum: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    },
-                    create_thread: {
-                        admin: 1,
-                        moderators: 0,
-                        members: 0
-                    },
-                    reply_to_thread: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    }
-                }
-            },
-            {
-                id: 1,
-                title: "Another Forum",
-                description: "This is another forum",
-                last_post: '324985458273', // Unix timestamp
-                permissions: {
-                    view_forum: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    },
-                    create_thread: {
-                        admin: 1,
-                        moderators: 1,
-                        members: 1
-                    },
-                    reply_to_thread: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    }
-                }
-            }
-        ]
-    },
-    {
-        id: 1,
-        title: "Second Category",
-        forums: [
-            {
-                id: 0,
-                title: "Introductions",
-                description: "Introduce yourself to the community",
-                last_post: '324985458273', // Unix timestamp
-                permissions: {
-                    view_forum: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    },
-                    create_thread: {
-                        admin: 1,
-                        moderators: 0,
-                        members: 0
-                    },
-                    reply_to_thread: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    }
-                }
-            },
-            {
-                id: 1,
-                title: "Another Forum",
-                description: "This is another forum",
-                last_post: '324985458273', // Unix timestamp
-                permissions: {
-                    view_forum: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    },
-                    create_thread: {
-                        admin: 1,
-                        moderators: 1,
-                        members: 1
-                    },
-                    reply_to_thread: {
-                        admin: 1,
-                        moderator: 1,
-                        member: 1
-                    }
-                }
-            }
-        ]
-    }
-];
