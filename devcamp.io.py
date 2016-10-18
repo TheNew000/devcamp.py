@@ -211,44 +211,6 @@ def forum_main():
         display.append({"id": result[0][0], "title": result[0][1], "forums": forum_array})
     return jsonify(status=200, display=display)
 
-        
-
-
-
-
-        display = [
-            {
-                "id": 1, 
-                "title": "First Category", 
-                "forums": [
-                    {
-                        "id": 1, 
-                        "title": "Introductions", 
-                        "last_post": "2016-10-17 16:49:17.000000", 
-                        "description": "Introduce yo'self!", 
-                        "permissions": {
-                            "view_forum": {
-                                "admin": 1, 
-                                "member": 1, 
-                                "moderator": 1
-                            }, 
-                            "create_thread": {
-                                "admin": 1, 
-                                "member": 0, 
-                                "moderator": 0
-                            }, 
-                            "reply_to_thread": {
-                                "admin": 1, 
-                                "member": 1, 
-                                "moderator": 1
-                            }
-                        }
-                    }
-                ]
-            }
-        ]
-
-
 
 # END FORUM FUNCTIONALITY
 

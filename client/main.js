@@ -10,6 +10,26 @@
                 templateUrl: 'home/home.view.html',
                 controller: 'homeCtrl'
             })
+
+            .when('/forum', {
+                templateUrl: 'forum/forum/forum.view.html',
+                controller: 'forumCtrl'
+            })
+
+            .when('/forum/:id', {
+                templateUrl: 'forum/thread-list/thread-list.view.html',
+                controller: 'threadListCtrl'
+            })
+
+            .when('/forum/:id/new', {
+                templateUrl: 'forum/new-thread/new-thread.html'
+            })
+
+            .when('/topic/:id', {
+                templateUrl: 'forum/thread/thread.view.html',
+                controller: 'threadCtrl'
+            })
+
             .when('/members', {
                 templateUrl: 'members/members.view.html',
                 controller: 'membersCtrl'
@@ -18,6 +38,7 @@
                 templateUrl: 'blogs/blogs.view.html',
                 controller: 'blogsCtrl'
             })
+
             .otherwise({
                 redirectTo: '/'
             });
@@ -28,12 +49,19 @@
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     }
 
-    function mainController($scope) {
+    function mainController($scope, $route) {
         $scope.loggedIn = false;
         $scope.username = "Jackson";
+
+        $scope.isActive = function (path) {
+            if ($route.current && $route.current.regexp) {
+                return $route.current.regexp.test(path);
+            }
+            return false;
+        };
     }
 
     angular.module('devcamp')
         .config(['$routeProvider', '$httpProvider', config])
-        .controller('mainCtrl', ['$scope', mainController])
+        .controller('mainCtrl', ['$scope', '$route', mainController])
 })();

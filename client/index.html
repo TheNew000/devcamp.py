@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="devcamp">
+
 <head>
     <meta charset="UTF-8">
     <title>devcamp.io</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="../public/lib/bootstrap.min.css" rel="stylesheet">
@@ -11,13 +12,15 @@
     <link href="../public/lib/ripples.min.css" rel="stylesheet">
     <link href="../public/stylesheets/styles.css" rel="stylesheet">
 </head>
-<body ng-controller="mainCtrl">
 
+
+<body ng-controller="mainCtrl">
 <navigation></navigation>
 <login></login>
 <registration></registration>
 
 <div ng-view></div>
+
 
 <!--Dependencies-->
 <script src="../public/lib/angular.min.js"></script>
@@ -34,21 +37,47 @@
 
 <!--Main App-->
 <script src="main.js"></script>
+
+<!--Services-->
 <script src="common/services/auth.service.js"></script>
+
+
+<!--Directives-->
+<script src="forum/directives/category/category.directive.js"></script>
+<script src="forum/directives/forum/forum.directive.js"></script>
+<script src="forum/directives/thread/thread.directive.js"></script>
+<script src="forum/directives/reply/reply.directive.js"></script>
+<script src="forum/directives/thread-summary/thread-summary.directive.js"></script>
+<script src="common/directives/nav/nav.directive.js"></script>
+<script src="common/directives/login/login.directive.js"></script>
+<script src="common/directives/registration/registration.directive.js"></script>
+
+
+<!--Controllers-->
+
 <script src="home/home.controller.js"></script>
+<script src="forum/forum/forum.controller.js"></script>
+<script src="forum/thread-list/thread-list.controller.js"></script>
+<script src="forum/thread/thread.controller.js"></script>
 <script src="members/members.controller.js"></script>
 <script src="blogs/blogs.controller.js"></script>
+<script src="blogs/create-blog/create-blog.controller.js"></script>
 <script src="common/directives/nav/nav.controller.js"></script>
-<script src="common/directives/nav/nav.directive.js"></script>
 <script src="common/directives/login/login.controller.js"></script>
-<script src="common/directives/login/login.directive.js"></script>
 <script src="common/directives/registration/registration.controller.js"></script>
 <script src="common/directives/registration/registration.directive.js"></script>
 
 <script>
     $(document).ready(function () {
         $.material.init();
-    })
+        // $(document).on('focusin', function (e) {
+        //     if ($(e.target).closest("#createBlogModal").length) {
+        //         e.stopImmediatePropagation();
+        //     }
+
+        // });
+    });
 </script>
 </body>
+
 </html>
