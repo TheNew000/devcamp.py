@@ -38,7 +38,10 @@
                 templateUrl: 'blogs/blogs.view.html',
                 controller: 'blogsCtrl'
             })
-
+            .when('/create_blog', {
+                templateUrl: 'blogs/create-blog/create-blog.view.html',
+                controller: 'createBlogCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
