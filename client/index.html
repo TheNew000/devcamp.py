@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>devcamp.io</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <!-- Include Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Include Roboto Font Family -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <!-- Include Font Awesome -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
     <!-- Include Editor Styles -->
     <link href="../public/lib/froala_editor.min.css" rel="stylesheet">
     <link href="../public/lib/froala_style.min.css" rel="stylesheet">
@@ -37,83 +38,84 @@
 </head>
 
 <body ng-controller="mainCtrl">
-    <!-- Custom Directives -->
-    <navigation></navigation>
-    <login></login>
-    <register></register>
-    <div ng-view></div>
-    <!--Dependencies-->
-    <script src="../public/lib/angular.min.js"></script>
-    <script src="../public/lib/angular-animate.js"></script>
-    <script src="../public/lib/angular-cookies.js"></script>
-    <script src="../public/lib/angular-messages.min.js"></script>
-    <script src="../public/lib/angular-sanitize.min.js"></script>
-    <script src="../public/lib/angular-route.min.js"></script>
-    <script src="../public/lib/jquery.min.js"></script>
-    <script src="../public/lib/froala_editor.min.js"></script>
-    <script src="../public/lib/codemirror.js"></script>
-    <script src="../public/lib/xml.min.js"></script>
-    <script src="../public/lib/bootstrap.min.js"></script>
-    <script src="../public/lib/ripples.min.js"></script>
-    <script src="../public/lib/material.min.js"></script>
-    <script src="../public/lib/arrive.min.js"></script>
-    <!-- Rich Text Plugin Scripts -->
-    <script type="text/javascript" src="../public/lib/plugins/align.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/char_counter.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/code_beautifier.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/code_view.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/colors.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/emoticons.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/entities.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/file.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/font_family.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/font_size.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/fullscreen.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/image.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/image_manager.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/inline_style.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/line_breaker.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/link.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/lists.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/paragraph_format.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/paragraph_style.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/quick_insert.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/quote.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/table.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/save.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/url.min.js"></script>
-    <script type="text/javascript" src="../public/lib/plugins/video.min.js"></script>
-    <!--Main App-->
-    <script src="main.js"></script>
-    <!--Services-->
-    <script src="common/services/auth.service.js"></script>
-    <!--Directives-->
-    <script src="forum/directives/category/category.directive.js"></script>
-    <script src="forum/directives/forum/forum.directive.js"></script>
-    <script src="forum/directives/thread/thread.directive.js"></script>
-    <script src="forum/directives/reply/reply.directive.js"></script>
-    <script src="forum/directives/thread-summary/thread-summary.directive.js"></script>
-    <script src="common/directives/nav/nav.directive.js"></script>
-    <script src="common/directives/login/login.directive.js"></script>
-    <script src="common/directives/registration/registration.directive.js"></script>
-    <!--Controllers-->
-    <script src="home/home.controller.js"></script>
-    <script src="forum/forum/forum.controller.js"></script>
-    <script src="forum/thread-list/thread-list.controller.js"></script>
-    <script src="forum/thread/thread.controller.js"></script>
-    <script src="members/members.controller.js"></script>
-    <script src="blogs/blogs.controller.js"></script>
-    <script src="blogs/create-blog/create-blog.controller.js"></script>
-    <script src="common/directives/nav/nav.controller.js"></script>
-    <script src="common/directives/login/login.controller.js"></script>
-    <script src="common/directives/registration/registration.controller.js"></script>
-    <script src="common/directives/registration/registration.directive.js"></script>
-    <script>
-    $(document).ready(function() {
+<!-- Custom Directives -->
+<navigation></navigation>
+<login></login>
+<register></register>
+<div ng-view></div>
+<!--Dependencies-->
+<script src="../public/lib/angular.min.js"></script>
+<script src="../public/lib/angular-animate.js"></script>
+<script src="../public/lib/angular-cookies.js"></script>
+<script src="../public/lib/angular-messages.min.js"></script>
+<script src="../public/lib/angular-sanitize.min.js"></script>
+<script src="../public/lib/angular-route.min.js"></script>
+<script src="../public/lib/jquery.min.js"></script>
+<script src="../public/lib/froala_editor.min.js"></script>
+<script src="../public/lib/codemirror.js"></script>
+<script src="../public/lib/xml.min.js"></script>
+<script src="../public/lib/bootstrap.min.js"></script>
+<script src="../public/lib/ripples.min.js"></script>
+<script src="../public/lib/material.min.js"></script>
+<script src="../public/lib/arrive.min.js"></script>
+<!-- Rich Text Plugin Scripts -->
+<script type="text/javascript" src="../public/lib/plugins/align.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/char_counter.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/code_beautifier.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/code_view.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/colors.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/emoticons.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/entities.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/file.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/font_family.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/font_size.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/fullscreen.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/image.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/image_manager.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/inline_style.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/line_breaker.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/link.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/lists.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/paragraph_format.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/paragraph_style.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/quick_insert.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/quote.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/table.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/save.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/url.min.js"></script>
+<script type="text/javascript" src="../public/lib/plugins/video.min.js"></script>
+<!--Main App-->
+<script src="main.js"></script>
+<!--Services-->
+<script src="common/services/auth.service.js"></script>
+<script src="common/services/forum.service.js"></script>
+<!--Directives-->
+<script src="forum/directives/category/category.directive.js"></script>
+<script src="forum/directives/forum/forum.directive.js"></script>
+<script src="forum/directives/thread/thread.directive.js"></script>
+<script src="forum/directives/reply/reply.directive.js"></script>
+<script src="forum/directives/thread-summary/thread-summary.directive.js"></script>
+<script src="common/directives/nav/nav.directive.js"></script>
+<script src="common/directives/login/login.directive.js"></script>
+<script src="common/directives/registration/registration.directive.js"></script>
+<!--Controllers-->
+<script src="home/home.controller.js"></script>
+<script src="forum/forum/forum.controller.js"></script>
+<script src="forum/thread-list/thread-list.controller.js"></script>
+<script src="forum/thread/thread.controller.js"></script>
+<script src="members/members.controller.js"></script>
+<script src="blogs/blogs.controller.js"></script>
+<script src="blogs/create-blog/create-blog.controller.js"></script>
+<script src="common/directives/nav/nav.controller.js"></script>
+<script src="common/directives/login/login.controller.js"></script>
+<script src="common/directives/registration/registration.controller.js"></script>
+<script src="common/directives/registration/registration.directive.js"></script>
+<script>
+    $(document).ready(function () {
         $.material.init();
 
     });
-    </script>
+</script>
 </body>
 
 </html>
