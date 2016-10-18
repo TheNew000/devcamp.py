@@ -11,7 +11,8 @@
                 title: '@',
                 author: '@',
                 posts: '@',
-                views: '@'
+                views: '@',
+                posted: '@'
             }
         }
     }

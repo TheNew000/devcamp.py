@@ -9,7 +9,8 @@
             transclude: true,
             scope: {
                 title: '@',
-                description: '@'
+                description: '@',
+                id: '@'
             },
             templateUrl: 'forum/directives/forum/forum.template.html'
         }

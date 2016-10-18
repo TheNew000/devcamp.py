@@ -1,0 +1,23 @@
+{
+  "name": "devcamp.io",
+  "version": "1.0.0",
+  "description": "###Contributors: Danny Arango [Github](https://github.com/TheNew000) [Website](www.dannyarango.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolitionDevelopment/devcamp.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VolitionDevelopment/devcamp.io/issues"
+  },
+  "homepage": "https://github.com/VolitionDevelopment/devcamp.io#readme",
+  "dependencies": {
+    "angular-ui-tinymce": "0.0.17",
+    "summernote": "^0.8.2"
+  }
+}

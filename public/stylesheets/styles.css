@@ -13,70 +13,65 @@ img {
 body {
   background: url("../images/background.jpg") no-repeat fixed center;
   background-size: cover;
+  padding-top: 100px;
 }
 
-/* line 17, ../compass/sass/styles.scss */
+/* line 18, ../compass/sass/styles.scss */
 div#homepage-top {
   margin-top: 15vh;
   height: 60vh;
   background: rgba(255, 255, 255, 0.9);
 }
-
-/* line 21, ../compass/sass/styles.scss */
+/* line 22, ../compass/sass/styles.scss */
 div#homepage-top .hero {
   margin: 0 auto;
   text-align: center;
 }
-
-/* line 24, ../compass/sass/styles.scss */
+/* line 25, ../compass/sass/styles.scss */
 div#homepage-top .hero img {
   display: inline;
   max-width: 10vw;
 }
-
-/* line 28, ../compass/sass/styles.scss */
+/* line 29, ../compass/sass/styles.scss */
 div#homepage-top .hero h1 {
   color: #009688;
 }
 
-/* line 37, ../compass/sass/styles.scss */
+/* line 38, ../compass/sass/styles.scss */
 .navbar {
   margin-bottom: 0;
 }
 
-/* line 41, ../compass/sass/styles.scss */
+/* line 42, ../compass/sass/styles.scss */
 body > div > .container {
   margin-top: 100px;
 }
 
-/* line 46, ../compass/sass/styles.scss */
+/* line 47, ../compass/sass/styles.scss */
 .jumbotron .btn-sm {
   margin-top: 0;
 }
-
-/* line 50, ../compass/sass/styles.scss */
+/* line 51, ../compass/sass/styles.scss */
 .jumbotron p.small {
   font-size: 14px;
 }
-
-/* line 54, ../compass/sass/styles.scss */
+/* line 55, ../compass/sass/styles.scss */
 .jumbotron p {
   margin-bottom: 5px;
 }
-
-/* line 57, ../compass/sass/styles.scss */
+/* line 58, ../compass/sass/styles.scss */
 .jumbotron p.timestamp {
   line-height: 40px;
 }
 
-/* line 63, ../compass/sass/styles.scss */
+/* line 64, ../compass/sass/styles.scss */
 .new-thread {
   position: relative !important;
   float: right !important;
   margin-top: -18px !important;
 }
 
-/* line 69, ../compass/sass/styles.scss */
+/* line 70, ../compass/sass/styles.scss */
 .subnav {
   top: 60px;
   background: rgba(204, 204, 204, 0.9);
@@ -87,19 +82,17 @@ body > div > .container {
   border-bottom: 1px solid #E1E1E1;
   padding: 8px 0px 0px 0px;
 }
-
-/* line 78, ../compass/sass/styles.scss */
+/* line 79, ../compass/sass/styles.scss */
 .subnav .btn-group-wrap {
   margin-top: -4vh;
 }
-
-/* line 80, ../compass/sass/styles.scss */
+/* line 81, ../compass/sass/styles.scss */
 .subnav .btn-group-wrap button {
   color: #009688;
   outline: none;
 }
 
-/* line 87, ../compass/sass/styles.scss */
+/* line 88, ../compass/sass/styles.scss */
 #create-blog {
   position: fixed;
   padding: 30px;

@@ -38,7 +38,10 @@
                 templateUrl: 'blogs/blogs.view.html',
                 controller: 'blogsCtrl'
             })
-
+            .when('/create_blog', {
+                templateUrl: 'blogs/create-blog/create-blog.view.html',
+                controller: 'createBlogCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -49,7 +52,7 @@
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     }
 
-    function mainController($scope, $route) {
+    function mainController($scope, $route, $http) {
         $scope.loggedIn = false;
         $scope.username = "Jackson";
 
@@ -83,5 +86,5 @@
 
     angular.module('devcamp')
         .config(['$routeProvider', '$httpProvider', config])
-        .controller('mainCtrl', ['$scope', '$route', mainController])
+        .controller('mainCtrl', ['$scope', '$route', '$http', mainController])
 })();

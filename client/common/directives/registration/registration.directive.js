@@ -1,7 +1,7 @@
 (function () {
     function registration(){
         return {
-            restrict: 'EA',
+            restrict: 'E',
             templateUrl: 'common/directives/registration/registration.template.html',
             controller: 'registerCtrl'
         }

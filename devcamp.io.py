@@ -256,8 +256,10 @@ def get_forum(id):
             count = thread_count[0]
 
         thread_array = []
-        for i in range(len(result))
+
+        for i in range(len(result)):
             thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": count, "post_time": result[i][5]})
+
         thread_object = {'forum_title': result[0][0], 'forum_id': result[0][6], 'threads': thread_array}
         return jsonify(status=200, thread_object = thread_object)
 
