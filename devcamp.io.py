@@ -237,6 +237,7 @@ def forum_main():
         display.append({"id": result[0][0], "title": result[0][1], "forums": forum_array})
     return jsonify(status=200, display=display)
 
+
 @app.route('/api/get_forum/<id>', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
 def get_forum(id):
@@ -250,13 +251,13 @@ def get_forum(id):
         thread_count = cursor.fetchone()
 
         if thread_count is None:
-            thread_count[0] = 0
+            thread_count = 0
         else:
-            thread_count[0] = thread_count[0]
+            thread_count = thread_count[0]
 
         thread_array = []
         for i in range(1, result + 1)
-            thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": thread_count[0], "post_time": result[i][5]})
+            thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": thread_count, "post_time": result[i][5]})
         thread_object = {'forum_title': result[i][0], 'forum_id': result[i][6], 'threads': thread_array}
         return jsonify(status=200, thread_object = thread_object)
 
