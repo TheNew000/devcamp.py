@@ -269,9 +269,9 @@ def get_forum(id):
 def get_thread(id):
     # cursor.execute("SELECT T2.*, users.username AS Rep_Auth_User FROM (SELECT T1.*, users.username AS T_Auth_Username FROM (SELECT thread.title, thread.id AS Thread_ID, thread.post_content as thread_content, thread.author_id AS Thread_Author, thread_reply.post_content, thread_reply.id AS Reply_ID, thread_reply.author_id AS Reply_Author, thread_reply.created AS Post_Time FROM thread LEFT JOIN thread_reply ON thread_reply.thread_id = thread.id WHERE thread.id = %s) AS T1 LEFT JOIN users ON users.id = T1.Thread_Author) AS T2 LEFT JOIN users ON users.id = T2.Reply_Author", id)
     # result = cursor.fetchall()
-    cursor.execute("SELECT thread.title, thread.id, thread.post_content, users.username AS Thread_Author FROM thread LEFT JOIN users ON users.id = thread.author_id WHERE thread.id = 1")
+    cursor.execute("SELECT thread.title, thread.id, thread.post_content, users.username AS Thread_Author FROM thread LEFT JOIN users ON users.id = thread.author_id WHERE thread.id = %s", id)
     thread_info = cursor.fetchone()
-    cursor.execute("SELECT thread_reply.post_content, thread_reply.id, users.username AS Reply_Author, thread_reply.created FROM thread_reply LEFT JOIN users ON thread_reply.author_id = users.id WHERE thread_reply.thread_id = 1")
+    cursor.execute("SELECT thread_reply.post_content, thread_reply.id, users.username AS Reply_Author, thread_reply.created FROM thread_reply LEFT JOIN users ON thread_reply.author_id = users.id WHERE thread_reply.thread_id = %s", id)
     reply_info = cursor.fetchall()
     if reply_info == ():
         return jsonify(status=401, message="No one has replied yet!  Be the first!")
