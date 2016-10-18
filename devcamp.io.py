@@ -183,7 +183,7 @@ def blog_search(category):
 def blog_post():
     article = request.get_json()['blog_post']
     cursor.execute("SELECT id from users WHERE username = %s", session['username'])
-    author_id = fetchone()
+    author_id = cursor.fetchone()
     if author_id is None:
         return jsonify(status=401, message="Please Log In to Interact")
     else:
@@ -200,7 +200,7 @@ def blog_post():
 @crossdomain(origin='*')
 def forum_main():
     cursor.execute("SELECT COUNT(id) FROM category")
-    counter = fetchone();
+    counter = cursor.fetchone()
     display = []
     for i in range(1, counter[0]):
         cursor.execute("SELECT category.id AS CAT_Id, category.title AS CAt_Title, forums.id, forums.title, forums.last_post, forums.description, forums.permissions FROM forums LEFT JOIN category ON forums.cat_id = category.id WHERE cat_id = %s", i)
