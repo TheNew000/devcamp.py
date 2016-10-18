@@ -10,8 +10,8 @@ import jwt
 mysql = MySQL()
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Kaboom12!'
+app.config['MYSQL_DATABASE_USER'] = 'x'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'x'
 app.config['MYSQL_DATABASE_DB'] = 'devcamp'
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -244,7 +244,7 @@ def get_forum(id):
     cursor.execute("SELECT forums.title, thread.*, users.username FROM thread LEFT JOIN forums ON forums.id = thread.forum_id LEFT JOIN users ON thread.author_id = users.id WHERE thread.forum_id = %s", id)
     result = cursor.fetchall()
 
-    if result is None:
+    if result == ():
         return jsonify(status=401, message="No results match your query")
     else:
         cursor.execute("SELECT COUNT(thread_id) FROM thread_reply WHERE thread_id = %s", id)
