@@ -218,15 +218,15 @@ def blog_post():
 #######################################
 
 # FUNCTIONALITY FOR FORUMS:
-@app.route('/api/forum_main', methods=['POST', 'OPTIONS'])
+@app.route('/api/forum_main', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
 def forum_main():
     cursor.execute("SELECT COUNT(id) FROM category")
     counter = cursor.fetchone()
     display = []
-    for i in range(1, counter[0]):
+    for i in range(1, int(counter[0]) + 1):
         cursor.execute(
-            "SELECT category.id AS CAT_Id, category.title AS CAt_Title, forums.id, forums.title, forums.last_post, forums.description, forums.permissions FROM forums LEFT JOIN category ON forums.cat_id = category.id WHERE cat_id = %s",
+            "SELECT category.id AS CAT_Id, category.title AS Cat_Title, forums.id, forums.title, forums.last_post, forums.description, forums.permissions FROM forums LEFT JOIN category ON forums.cat_id = category.id WHERE cat_id = %s",
             i)
         result = cursor.fetchall()
         forum_array = []
@@ -236,6 +236,29 @@ def forum_main():
                  "permissions": result[j][6]})
         display.append({"id": result[0][0], "title": result[0][1], "forums": forum_array})
     return jsonify(status=200, display=display)
+
+@app.route('/api/get_forum/<id>', methods=['GET', 'OPTIONS'])
+@crossdomain(origin='*')
+def get_forum(id):
+    cursor.execute("SELECT forums.title, thread.*, users.username FROM thread LEFT JOIN forums ON forums.id = thread.forum_id LEFT JOIN users ON thread.author_id = users.id WHERE thread.forum_id = %s", id)
+    result = cursor.fetchall()
+
+    if result is None:
+        return jsonify(status=401, message="No results match your query")
+    else:
+        cursor.execute("SELECT COUNT(thread_id) FROM thread_reply WHERE thread_id = %s", id)
+        thread_count = cursor.fetchone()
+
+        if thread_count is None:
+            thread_count[0] = 0
+        else:
+            thread_count[0] = thread_count[0]
+
+        thread_array = []
+        for i in range(1, result + 1)
+            thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": thread_count[0], "post_time": result[i][5]})
+        thread_object = {'forum_title': result[i][0], 'forum_id': result[i][6], 'threads': thread_array}
+        return jsonify(status=200, thread_object = thread_object)
 
 
 # END FORUM FUNCTIONALITY
