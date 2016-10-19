@@ -10,8 +10,8 @@ import jwt
 mysql = MySQL()
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Kaboom12!'
+app.config['MYSQL_DATABASE_USER'] = 'x'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'x!'
 app.config['MYSQL_DATABASE_DB'] = 'devcamp'
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['CORS_HEADERS'] = 'Content-Type'
