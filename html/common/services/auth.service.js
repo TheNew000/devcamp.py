@@ -33,11 +33,11 @@
         };
 
         var login = function (user) {
-            return $http.post('http://localhost:5000/api/login', user)
+            return $http.post('http://162.243.19.103:5000/api/login', user)
         };
 
         var register = function (user) {
-            return $http.post('http://localhost:5000/api/register', user)
+            return $http.post('http://162.243.19.103:5000/api/register', user)
         };
 
         return {
