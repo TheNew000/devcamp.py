@@ -13,8 +13,7 @@
                 <li ng-class="{'active': isActive('/')}"><a href="#/"><i class="material-icons">home</i>&nbspHome</a>
                 </li>
                 <li ng-class="{'active': isActive('/forum') || isActive('/forum/:id') || isActive('/forum/:id/new') || isActive('/topic/:id')}">
-                    <a
-                        href="#/forum"><i class="material-icons">forum</i>&nbspForum</a></li>
+                    <a href="#/forum"><i class="material-icons">forum</i>&nbspForum</a></li>
                 <li ng-class="{'active': isActive('/blogs')}"><a href="#/blogs"><i class="material-icons">art_track</i>&nbspBlogs</a>
                 </li>
                 <li ng-class="{'active': isActive('/members')}"><a href="#/members"><i class="material-icons">group</i>&nbspMembers</a>
@@ -31,15 +30,15 @@
                         <span ng-show="loggedIn">{{ username }}&nbsp<i class="material-icons">account_circle</i></span>
                         <span ng-hide="loggedIn">Login&nbsp<i class="material-icons">exit_to_app</i></span>
                         <ul class="dropdown-menu" ng-show="loggedIn">
-                            <li><a href="javascript:void(0)">Profile</a></li>
-                            <li><a href="javascript:void(0)">Settings</a></li>
+                            <li><a href="#/profile">Profile</a></li>
+                            <li><a href="#/settings">Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="javascript:void(0)" ng-click="loggedIn = false">Log Out</a></li>
+                            <li><a ng-click="loggedIn = false">Log Out</a></li>
                         </ul>
                         <ul class="dropdown-menu" ng-hide="loggedIn">
-                            <li><a href="javascript:void(0)" data-target="#loginModal" data-toggle="modal">Log In</a></li>
+                            <li><a data-target="#loginModal" data-toggle="modal">Log In</a></li>
                             <li class="divider"></li>
-                            <li><a href="javascript:void(0)" data-target="#registerModal" data-toggle="modal">Register</a></li>
+                            <li><a data-target="#registerModal" data-toggle="modal">Register</a></li>
                         </ul>
                     </a>
                 </li>

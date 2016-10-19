@@ -30,6 +30,11 @@
                 controller: 'threadCtrl'
             })
 
+            .when('/profile', {
+                templateUrl: 'fprofile.view.html',
+                controller: 'profileCtrl'
+            })
+
             .when('/members', {
                 templateUrl: 'members/members.view.html',
                 controller: 'membersCtrl'
