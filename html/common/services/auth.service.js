@@ -17,6 +17,10 @@
             $window.localStorage.removeItem('devtoken');
         };
 
+        var getProfile = function (id) {
+            return http.get('http://162.243.19.103:5000/api/profile/' + id);
+        };
+
         var isLoggedIn = function () {
             var token = getToken();
             var payload;

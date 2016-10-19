@@ -78,6 +78,18 @@ def hello_world():
     })
 
 
+@app.route('/api/profile/<id>', methods=['GET', 'OPTIONS'])
+@crossdomain(origin='*')
+def profile(id):
+    cursor.execute("SELECT id, username, full_name, title, start_date, avatar, email, rank_id FROM users WHERE id = %s", id)
+    result = cursor.fetchone()
+    if result == ():
+        return jsonify(status=404, message="This user ID does not appear to match our records")
+    else:
+        user = {"id": result[0], "username": result[1], "fullname": result[2], "title": result[3], "startDate": result[4], "avatar": result[5], "email": result[6], "rankID": result[7]}
+        return jsonify(status=200, user=user)
+
+
 @app.route('/api/login', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def login():

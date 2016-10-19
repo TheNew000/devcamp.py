@@ -2,8 +2,8 @@
  * Created by Jackson on 10/13/16.
  */
 (function(){
-    function navController($scope){
-
+    function navController($scope, auth){
+        
     }
 
     angular.module('devcamp')
