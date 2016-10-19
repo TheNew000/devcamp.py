@@ -1,33 +1,9 @@
 <div class="container">
-    <thread title="Hello, world!" author="Hambone">
-        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis delectus eligendi et
-            expedita illum iste minima minus modi mollitia nostrum odio perferendis quae quis repellendus, rerum
-            veritatis. Provident,
-            vero!</p>
-        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis delectus eligendi et
-            expedita illum iste minima minus modi mollitia nostrum odio perferendis quae quis repellendus, rerum
-            veritatis. Provident, vero!</p>
-        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis delectus eligendi et
-            expedita illum iste minima minus modi mollitia nostrum odio perferendis quae quis repellendus, rerum
-            veritatis. Provident, vero!</p>
+    <thread title="{{thread.title}}" author="{{thread.author}}" id="{{thread.id}}">
+        {{thread.content}}
     </thread>
 
-    <reply author="Danny">
-        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut autem hic magnam minima
-            reiciendis sunt? Blanditiis culpa dolorem dolores eligendi explicabo libero officiis. Consequuntur doloribus
-            magni nemo repellendus tempore.</p>
-    </reply>
-
-    <reply author="Danny">
-        <blockquote>
-            <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut autem hic magnam minima
-                reiciendis sunt? Blanditiis culpa dolorem dolores eligendi explicabo libero officiis. Consequuntur
-                doloribus magni nemo repellendus tempore.</p>
-            <footer>Danny</footer>
-        </blockquote>
-
-        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut autem hic magnam minima
-            reiciendis sunt? Blanditiis culpa dolorem dolores eligendi explicabo libero officiis. Consequuntur doloribus
-            magni nemo repellendus tempore.</p>
+    <reply author="{{reply.author}}" ng-repeat="reply in thread.replies">
+        {{reply.content}}
     </reply>
 </div>

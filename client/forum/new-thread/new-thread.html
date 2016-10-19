@@ -2,13 +2,15 @@
     <div class="well">
         <h3>New Thread</h3>
         <hr>
-        <form role="form" name="createThread" ng-submit="">
+        <form role="form" name="createThread" ng-submit="submit()">
             <div class="form-group label-floating">
                 <label class="control-label" for="title">Thread Title</label>
-                <input class="form-control" id="title" type="text" name="title">
+                <input class="form-control" id="title" type="text" name="title" ng-model="thread.title">
             </div>
             <div class="form-group label-floating">
-                <summernote></summernote>
+                <label class="control-label" for="content">Thread Body</label>
+                <textarea id="content" name="content" class="form-control" rows="6"
+                          ng-model="thread.content"></textarea>
             </div>
             <div class="form-group label-floating">
                 <button type="submit" class="btn btn-primary btn-raised">Create Thread</button>

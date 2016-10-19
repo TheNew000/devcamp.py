@@ -22,12 +22,23 @@
             })
 
             .when('/forum/:id/new', {
-                templateUrl: 'forum/new-thread/new-thread.html'
+                templateUrl: 'forum/new-thread/new-thread.html',
+                controller: 'newThreadCtrl'
             })
 
             .when('/topic/:id', {
                 templateUrl: 'forum/thread/thread.view.html',
                 controller: 'threadCtrl'
+            })
+
+            .when('/topic/:id/reply', {
+                templateUrl: 'forum/new-reply/new-reply.html',
+                controller: 'newReplyCtrl'
+            })
+
+            .when('/profile', {
+                templateUrl: 'fprofile.view.html',
+                controller: 'profileCtrl'
             })
 
             .when('/members', {

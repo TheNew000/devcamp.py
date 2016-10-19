@@ -11,7 +11,7 @@
             scope: {
                 author: '@',
                 title: '@',
-
+                id: '@'
             }
         }
     }
