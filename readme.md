@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-#--Devcamp.io-- 
-##An interactive playground for bootcamp students: past, present, and future
-=======
+
 #Devcamp.io - An interactive playground for bootcamp students: past, present, and future
 * A back-end project for DigitalCrafts that must utiilze a server side languange
 * Utilize scrum agile methodology implemented via scrum meetings and scrum board to track our progress
