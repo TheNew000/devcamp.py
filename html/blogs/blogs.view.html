@@ -7,7 +7,6 @@
             </div>
             <ul class="pager subnav-pager">
                 <div class="btn-group-wrap">
-                    <button type="button" class="btn">Schools / Bootcamps</button>
                     <button type="button" class="btn">JavaScript</button>
                     <button type="button" class="btn">PHP/Python</button>
                     <button type="button" class="btn">Frontend Frameworks</button>
@@ -31,7 +30,7 @@
                     <h2 class="text-center">category</h2>
                 </div>
             </div>
-            {% for blog in blog_feed %}
+            
             <div class="panel-body">
                 <!--BLOG CONTENT -->
                 <h3>{{blog[4]}}<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3>
@@ -43,7 +42,7 @@
                 <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
                 <hr />
             </div>
-            {% endfor %}
+            
         </div>
         <!--end blog-left -->
         <div id="blog-right" class="col-sm-4">
@@ -53,7 +52,7 @@
                         <h2 class="text-center">popular blogs</h2>
                     </div>
                 </div>
-                {% for blog in popular_blogs %}
+                
                 <div class="panel-body">
                     <h3>{{blog[4]}}<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star</i></a></h3>
                     <h5 class="timestamp pull-right nopadding">{{blog[2]}}</h5>
@@ -64,7 +63,7 @@
                     <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
                     <hr />
                 </div>
-                {% endfor %}
+            
             </div>
         </div>
         <!--end blog-right-->
