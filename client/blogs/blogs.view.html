@@ -7,14 +7,14 @@
             </div>
             <ul class="pager subnav-pager">
                 <div class="btn-group-wrap">
-                    <button type="button" class="btn">Category 1</button>
-                    <button type="button" class="btn">Category 2</button>
-                    <button type="button" class="btn">Category 3</button>
-                    <button type="button" class="btn">Category 4</button>
-                    <button type="button" class="btn">Category 5</button>
-                    <button type="button" class="btn">Category 6</button>
-                    <button type="button" class="btn">Category 7</button>
-                    <button type="button" class="btn">Category 8</button>
+                    <button type="button" class="btn">Schools / Bootcamps</button>
+                    <button type="button" class="btn">JavaScript</button>
+                    <button type="button" class="btn">PHP/Python</button>
+                    <button type="button" class="btn">Frontend Frameworks</button>
+                    <button type="button" class="btn">NodeJS</button>
+                    <button type="button" class="btn">Database</button>
+                    <button type="button" class="btn">Linux</button>
+                    <button type="button" class="btn">Resources</button>
                 </div>
             </ul>
         </div>
@@ -22,7 +22,6 @@
 </div>
 <div id="editor-container"></div>
 <!-- //subnav -->
-<createblog ng-click="openModal()"></createblog>
 <!-- Begin Body -->
 <div class="container blog-wrapper">
     <div class="row">
@@ -32,27 +31,19 @@
                     <h2 class="text-center">category</h2>
                 </div>
             </div>
+            {% for blog in blog_feed %}
             <div class="panel-body">
-                <h3>Blog About<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3>
-                <h5 class="timestamp pull-right nopadding">October 10, 2016</h5>
-                <h4 class="author">Freddie Fingas</h4>
+                <!--BLOG CONTENT -->
+                <h3>{{blog[4]}}<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3>
+                <h5 class="timestamp pull-right nopadding">{{blog[2]}}</h5>
+                <h4 class="author">{{blog[0]}}</h4>
                 <div id="blog-content">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                    {{blog[3]}}
                 </div>
                 <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
                 <hr />
-                <h3>Blog Number Two<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star</i></a></h3> More em aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
-                <hr />
-                <h3>Another Blog<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3> Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
-                <hr />
-                <h3>You NEED to Read this Blog<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
-                <hr />
-                <h3>Sample Blog About Lorem<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
             </div>
+            {% endfor %}
         </div>
         <!--end blog-left -->
         <div id="blog-right" class="col-sm-4">
@@ -62,30 +53,18 @@
                         <h2 class="text-center">popular blogs</h2>
                     </div>
                 </div>
+                {% for blog in popular_blogs %}
                 <div class="panel-body">
-                    <h3>Blog About<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star</i></a></h3> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                    <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
-                    <hr />
-                    <h3>Blog Number Two<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3> More em aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                    <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
-                </div>
-            </div>
-            <div id="current-blog" class="panel panel-warning">
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        <h2 class="text-center">newest blogs</h2>
+                    <h3>{{blog[4]}}<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star</i></a></h3>
+                    <h5 class="timestamp pull-right nopadding">{{blog[2]}}</h5>
+                    <h4>{{blog[0]}}</h4>
+                    <div class="article">
+                        {{blog[3]}}
                     </div>
-                </div>
-                <div class="panel-body">
-                    <h3>Another Blog<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star</i></a></h3> Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
                     <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
                     <hr />
-                    <h2>You NEED to Read this Blog<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h2> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                    <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
-                    <hr />
-                    <h2>Sample Blog About Lorem<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h2> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                    <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
                 </div>
+                {% endfor %}
             </div>
         </div>
         <!--end blog-right-->
