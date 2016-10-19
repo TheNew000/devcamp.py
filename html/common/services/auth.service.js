@@ -50,7 +50,8 @@
             logout: logout,
             isLoggedIn: isLoggedIn,
             login: login,
-            register: register
+            register: register,
+            getProfile: getProfile
         }
     }
 
