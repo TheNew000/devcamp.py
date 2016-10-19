@@ -64,9 +64,6 @@
     }
 
     function mainController($scope, $route, $http) {
-        $scope.loggedIn = false;
-        $scope.username = "Jackson";
-
         $scope.isActive = function (path) {
             if ($route.current && $route.current.regexp) {
                 return $route.current.regexp.test(path);

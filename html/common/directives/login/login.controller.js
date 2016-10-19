@@ -6,8 +6,8 @@
     function loginController($scope, auth) {
         $scope.register = function () {
             auth.register({
-                username: "jackson",
-                password: "password"
+                username: $scope.username,
+                password: $scope.password
             }).then(function (response) {
                 console.log(response.statusText);
             })
