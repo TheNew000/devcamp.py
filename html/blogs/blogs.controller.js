@@ -13,12 +13,7 @@
                 content_css: '//www.tinymce.com/css/codepen.min.css'
             });
         }
-        $http({
-            method: 'get',
-            url: 'http://127.0.0.1:5000/api/blogs'
-        }).then(function successCallback(response){
-            console.log(response.data);
-        })
+        
 
     }
     angular.module('devcamp')
