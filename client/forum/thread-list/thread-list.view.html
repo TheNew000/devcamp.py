@@ -9,7 +9,7 @@
             <div class="list-group">
                 <div ng-repeat="thread in forum.threads">
                     <thread-summary title="{{thread.title}}" author="{{thread.author}}" posts="{{thread.reply_count}}"
-                                    views="45" posted="{{thread.post_time}}"></thread-summary>
+                                    views="45" posted="{{thread.post_time}}" id="{{thread.id}}"></thread-summary>
                     <div class="list-group-separator"></div>
                 </div>
             </div>

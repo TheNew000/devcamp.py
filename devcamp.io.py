@@ -10,8 +10,8 @@ import jwt
 mysql = MySQL()
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'x'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'x'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Kaboom12!'
 app.config['MYSQL_DATABASE_DB'] = 'devcamp'
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -241,7 +241,9 @@ def forum_main():
 @app.route('/api/get_forum/<id>', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
 def get_forum(id):
-    cursor.execute("SELECT forums.title, thread.*, users.username FROM thread LEFT JOIN forums ON forums.id = thread.forum_id LEFT JOIN users ON thread.author_id = users.id WHERE thread.forum_id = %s", id)
+    cursor.execute(
+        "SELECT forums.title, thread.*, users.username FROM thread LEFT JOIN forums ON forums.id = thread.forum_id LEFT JOIN users ON thread.author_id = users.id WHERE thread.forum_id = %s",
+        id)
     result = cursor.fetchall()
 
     if result == ():
@@ -258,10 +260,12 @@ def get_forum(id):
         thread_array = []
 
         for i in range(len(result)):
-            thread_array.append({"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": count, "post_time": result[i][5]})
+            thread_array.append(
+                {"title": result[i][2], "id": result[i][1], "author": result[i][9], "reply_count": count,
+                 "post_time": result[i][5]})
 
         thread_object = {'forum_title': result[0][0], 'forum_id': result[0][6], 'threads': thread_array}
-        return jsonify(status=200, thread_object = thread_object)
+        return jsonify(status=200, thread_object=thread_object)
 
 
 @app.route('/api/get_thread/<id>', methods=['GET', 'OPTIONS'])
@@ -269,18 +273,55 @@ def get_forum(id):
 def get_thread(id):
     # cursor.execute("SELECT T2.*, users.username AS Rep_Auth_User FROM (SELECT T1.*, users.username AS T_Auth_Username FROM (SELECT thread.title, thread.id AS Thread_ID, thread.post_content as thread_content, thread.author_id AS Thread_Author, thread_reply.post_content, thread_reply.id AS Reply_ID, thread_reply.author_id AS Reply_Author, thread_reply.created AS Post_Time FROM thread LEFT JOIN thread_reply ON thread_reply.thread_id = thread.id WHERE thread.id = %s) AS T1 LEFT JOIN users ON users.id = T1.Thread_Author) AS T2 LEFT JOIN users ON users.id = T2.Reply_Author", id)
     # result = cursor.fetchall()
-    cursor.execute("SELECT thread.title, thread.id, thread.post_content, users.username AS Thread_Author FROM thread LEFT JOIN users ON users.id = thread.author_id WHERE thread.id = %s", id)
+    cursor.execute(
+        "SELECT thread.title, thread.id, thread.post_content, users.username AS Thread_Author FROM thread LEFT JOIN users ON users.id = thread.author_id WHERE thread.id = %s",
+        id)
     thread_info = cursor.fetchone()
-    cursor.execute("SELECT thread_reply.post_content, thread_reply.id, users.username AS Reply_Author, thread_reply.created FROM thread_reply LEFT JOIN users ON thread_reply.author_id = users.id WHERE thread_reply.thread_id = %s", id)
+
+    thread_object = {
+        "content": thread_info[2],
+        "title": thread_info[0],
+        "id": thread_info[1],
+        "author": thread_info[3]
+    }
+
+    cursor.execute(
+        "SELECT thread_reply.post_content, thread_reply.id, users.username AS Reply_Author, thread_reply.created FROM thread_reply LEFT JOIN users ON thread_reply.author_id = users.id WHERE thread_reply.thread_id = %s",
+        id)
     reply_info = cursor.fetchall()
     if reply_info == ():
-        return jsonify(status=401, message="No one has replied yet!  Be the first!")
+        return jsonify(status=200, thread_object=thread_object)
     else:
         reply_array = []
-        for i in range(len(reply_info))
-            reply_array.append({"content": reply_info[i][0], "id": reply_info[i][1], "author": reply_info[i][2], "post_time": reply_info[i][3]})
-        thread_object = {'thread_title': thread_info[0], 'thread_id': thread_info[1], 'thread_content': thread_info[2], 'thread_author': thread_info[3], 'threads': reply_array}
-        return jsonify(status=200, thread_object = thread_object)
+        for i in range(len(reply_info)):
+            reply_array.append({"content": reply_info[i][0], "id": reply_info[i][1], "author": reply_info[i][2],
+                                "post_time": reply_info[i][3]})
+        thread_object = {'title': thread_info[0], 'id': thread_info[1], 'content': thread_info[2],
+                         'author': thread_info[3], 'replies': reply_array}
+        return jsonify(status=200, thread_object=thread_object)
+
+
+@app.route('/api/create_thread/<id>', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def create_thread(id):
+    cursor.execute("INSERT INTO thread VALUES (DEFAULT, %s, %s, %s, DEFAULT, %s, 0, 0)",
+                   (request.get_json()['title'], request.get_json()['author_id'], request.get_json()['content'], id))
+
+    conn.commit()
+
+    return jsonify(status=200)
+
+
+@app.route('/api/create_reply/<id>', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def create_reply(id):
+    cursor.execute("INSERT INTO thread_reply VALUES (DEFAULT, %s, %s, DEFAULT, %s)",
+                   (request.get_json()['author_id'], request.get_json()['content'], id))
+
+    conn.commit()
+
+    return jsonify(status=200)
+
 
 # END FORUM FUNCTIONALITY
 

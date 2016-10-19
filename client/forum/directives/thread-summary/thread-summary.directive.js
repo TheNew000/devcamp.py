@@ -12,7 +12,8 @@
                 author: '@',
                 posts: '@',
                 views: '@',
-                posted: '@'
+                posted: '@',
+                id: '@'
             }
         }
     }
