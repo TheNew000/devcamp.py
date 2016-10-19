@@ -10,8 +10,8 @@ import jwt
 mysql = MySQL()
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'root' 
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Kaboom12!' 
+app.config['MYSQL_DATABASE_USER'] = 'x'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'x!'
 app.config['MYSQL_DATABASE_DB'] = 'devcamp'
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -294,11 +294,9 @@ def get_thread(id):
     else:
         reply_array = []
         for i in range(len(reply_info)):
-<<<<<<< HEAD
             reply_array.append({"content": reply_info[i][0], "id": reply_info[i][1], "author": reply_info[i][2], "post_time": reply_info[i][3]})
         thread_object = {'thread_title': thread_info[0], 'thread_id': thread_info[1], 'thread_content': thread_info[2], 'thread_author': thread_info[3], 'threads': reply_array}
         return jsonify(status=200, thread_object = thread_object)
-=======
             reply_array.append({"content": reply_info[i][0], "id": reply_info[i][1], "author": reply_info[i][2],
                                 "post_time": reply_info[i][3]})
         thread_object = {'title': thread_info[0], 'id': thread_info[1], 'content': thread_info[2],
@@ -327,7 +325,6 @@ def create_reply(id):
 
     return jsonify(status=200)
 
->>>>>>> 0b4ed71f4d22da4e3c746c27c15d0e824bf7d505
 
 # END FORUM FUNCTIONALITY
 
