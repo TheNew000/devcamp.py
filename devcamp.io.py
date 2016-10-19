@@ -295,13 +295,8 @@ def get_thread(id):
         reply_array = []
         for i in range(len(reply_info)):
             reply_array.append({"content": reply_info[i][0], "id": reply_info[i][1], "author": reply_info[i][2], "post_time": reply_info[i][3]})
-        thread_object = {'thread_title': thread_info[0], 'thread_id': thread_info[1], 'thread_content': thread_info[2], 'thread_author': thread_info[3], 'threads': reply_array}
-        return jsonify(status=200, thread_object = thread_object)
-            reply_array.append({"content": reply_info[i][0], "id": reply_info[i][1], "author": reply_info[i][2],
-                                "post_time": reply_info[i][3]})
-        thread_object = {'title': thread_info[0], 'id': thread_info[1], 'content': thread_info[2],
-                         'author': thread_info[3], 'replies': reply_array}
-        return jsonify(status=200, thread_object=thread_object)
+            thread_object = {'title': thread_info[0], 'id': thread_info[1], 'content': thread_info[2], 'author': thread_info[3], 'replies': reply_array}
+            return jsonify(status=200, thread_object=thread_object)
 
 
 @app.route('/api/create_thread/<id>', methods=['POST', 'OPTIONS'])
