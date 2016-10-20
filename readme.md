@@ -12,7 +12,7 @@ Brett Burdick [Github](http://www.github.com/BRETT-B) [Website](http://www.brett
 
 Jackson Yeager [Github](http://www.github.com/volitiondevelopment) [Website](https://www.volition-dev.com)
 
-#Devcamp.io - An interactive playground for bootcamp students: past, present, and future
+# Devcamp.io - An interactive playground for bootcamp students: past, present, and future
 * A back-end project for DigitalCrafts that must utiilze a server side languange
 * Utilize scrum agile methodology implemented via scrum meetings and scrum board to track our progress
 
