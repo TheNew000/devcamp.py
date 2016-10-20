@@ -1,0 +1,9 @@
+<div class="container">
+    <thread title="{{thread.title}}" author="{{thread.author}}" id="{{thread.id}}">
+        {{thread.content}}
+    </thread>
+
+    <reply author="{{reply.author}}" ng-repeat="reply in thread.replies">
+        {{reply.content}}
+    </reply>
+</div>

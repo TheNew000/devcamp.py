@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="well">
+        <form id="createBlog" name="create_blog" ng-submit="submit" method="post">
+            <fieldset>
+                <legend class="text-center">Create Blog</legend>
+                <div class="form-group label-floating">
+                    <label for="blogTitle" class="control-label">Blog Title</label>
+                    <input type="text" class="form-control" name="blog_title" id="blogTitle">
+                    <p class="help-block">This will be the title of your blog</p>
+                </div>
+                <div class="form-group label-floating">
+                    <label for="description" class="control-label">Description</label>
+                    <input type="text" class="form-control" name="description" id="description">
+                    <p class="help-block">A sentence briefly describing the blog</p>
+                </div>
+                <div class="form-group">
+                    <textarea id="editor" name="editor" rows="15" class="col-sm-12"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <a href="#/blogs"><button type="button" class="btn btn-default">Cancel</button></a>
+                    <button type="submit" class="btn btn-primary btn-raised" ng-click="createBlog()">Post Blog
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

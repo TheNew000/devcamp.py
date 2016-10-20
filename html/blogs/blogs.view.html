@@ -1,0 +1,73 @@
+<!-- subnav here -->
+<div class="navbar subnav navbar-fixed-top" role="navigation">
+    <div class="navbar-inner">
+        <div class="subnav-container">
+            <div id="create-blog">
+                <a href="#/create_blog" class="btn btn-default btn-fab btn-warning blogModal"><i class="material-icons">create</i></a>
+            </div>
+            <ul class="pager subnav-pager">
+                <div class="btn-group-wrap">
+                    <button type="button" class="btn">JavaScript</button>
+                    <button type="button" class="btn">PHP/Python</button>
+                    <button type="button" class="btn">Frontend Frameworks</button>
+                    <button type="button" class="btn">NodeJS</button>
+                    <button type="button" class="btn">Database</button>
+                    <button type="button" class="btn">Linux</button>
+                    <button type="button" class="btn">Resources</button>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="editor-container"></div>
+<!-- //subnav -->
+<!-- Begin Body -->
+<div class="container blog-wrapper">
+    <div class="row">
+        <div id="blog-left" class="col-sm-8 panel panel-success nopadding">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h2 class="text-center">category</h2>
+                </div>
+            </div>
+            
+            <div class="panel-body">
+                <!--BLOG CONTENT -->
+                <h3>{{blog[4]}}<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star_border</i></a></h3>
+                <h5 class="timestamp pull-right nopadding">{{blog[2]}}</h5>
+                <h4 class="author">{{blog[0]}}</h4>
+                <div id="blog-content">
+                    {{blog[3]}}
+                </div>
+                <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
+                <hr />
+            </div>
+            
+        </div>
+        <!--end blog-left -->
+        <div id="blog-right" class="col-sm-4">
+            <div id="popular-blog" class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h2 class="text-center">popular blogs</h2>
+                    </div>
+                </div>
+                
+                <div class="panel-body">
+                    <h3>{{blog[4]}}<a href="javascript:void(0)" class="btn btn-danger btn-fab-mini pull-right nopadding"><i class="material-icons">star</i></a></h3>
+                    <h5 class="timestamp pull-right nopadding">{{blog[2]}}</h5>
+                    <h4>{{blog[0]}}</h4>
+                    <div class="article">
+                        {{blog[3]}}
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block">Read More</a>
+                    <hr />
+                </div>
+            
+            </div>
+        </div>
+        <!--end blog-right-->
+    </div>
+    <!--end row -->
+</div>
+<!-- end container -->

@@ -1,0 +1,101 @@
+/* line 3, ../compass/sass/styles.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 7, ../compass/sass/styles.scss */
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* line 12, ../compass/sass/styles.scss */
+body {
+  background: url("../images/background.jpg") no-repeat fixed center;
+  background-size: cover;
+  padding-top: 100px;
+}
+
+/* line 18, ../compass/sass/styles.scss */
+div#homepage-top {
+  margin-top: 15vh;
+  height: 60vh;
+  background: rgba(255, 255, 255, 0.9);
+}
+/* line 22, ../compass/sass/styles.scss */
+div#homepage-top .hero {
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 25, ../compass/sass/styles.scss */
+div#homepage-top .hero img {
+  display: inline;
+  max-width: 10vw;
+}
+/* line 29, ../compass/sass/styles.scss */
+div#homepage-top .hero h1 {
+  color: #009688;
+}
+
+/* line 38, ../compass/sass/styles.scss */
+.navbar {
+  margin-bottom: 0;
+}
+
+/* line 42, ../compass/sass/styles.scss */
+body > div > .container {
+  margin-top: 100px;
+}
+
+/* line 47, ../compass/sass/styles.scss */
+.jumbotron .btn-sm {
+  margin-top: 0;
+}
+/* line 51, ../compass/sass/styles.scss */
+.jumbotron p.small {
+  font-size: 14px;
+}
+/* line 55, ../compass/sass/styles.scss */
+.jumbotron p {
+  margin-bottom: 5px;
+}
+/* line 58, ../compass/sass/styles.scss */
+.jumbotron p.timestamp {
+  line-height: 40px;
+}
+
+/* line 64, ../compass/sass/styles.scss */
+.new-thread {
+  position: relative !important;
+  float: right !important;
+  margin-top: -18px !important;
+}
+
+/* line 70, ../compass/sass/styles.scss */
+.subnav {
+  top: 60px;
+  background: rgba(204, 204, 204, 0.9);
+  margin: 0;
+  margin-bottom: 20px;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #E1E1E1;
+  padding: 8px 0px 0px 0px;
+}
+/* line 79, ../compass/sass/styles.scss */
+.subnav .btn-group-wrap {
+  margin-top: -4vh;
+}
+/* line 81, ../compass/sass/styles.scss */
+.subnav .btn-group-wrap button {
+  color: #009688;
+  outline: none;
+}
+
+/* line 88, ../compass/sass/styles.scss */
+#create-blog {
+  position: fixed;
+  padding: 30px;
+  z-index: 200;
+  margin-top: -5vh;
+}

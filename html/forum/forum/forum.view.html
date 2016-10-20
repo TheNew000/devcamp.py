@@ -1,0 +1,10 @@
+<div class="container">
+    <category ng-repeat="category in categories" title="{{category.title}}">
+        <div class="list-group">
+            <div ng-repeat="forum in category.forums">
+                <forum title="{{forum.title}}" description="{{forum.description}}" id="{{forum.id}}"></forum>
+                <div class="list-group-separator"></div>
+            </div>
+        </div>
+    </category>
+</div>
