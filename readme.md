@@ -16,7 +16,7 @@ Jackson Yeager [Github](http://www.github.com/volitiondevelopment) [Website](htt
 * A back-end project for DigitalCrafts that must utiilze a server side languange
 * Utilize scrum agile methodology implemented via scrum meetings and scrum board to track our progress
 
-![screenshot](public/images/trelloboard.png)
+![screenshot](/html/public/images/trelloboard.png)
 
 #Overview
 * Devcamp.io is site where coding bootcamp students, potential students, and graduates can come to post blogs about their experiences and discuss topics in the forum
