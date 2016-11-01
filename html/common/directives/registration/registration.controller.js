@@ -5,7 +5,7 @@
             if($scope.password != $scope.confirm){
                 alert('Your passwords do not match!');
             }else{
-                $http.post('http://localhost:5000/api/register', {
+                $http.post('http://dannyarango.com:7070/api/register', {
                     fullName: $scope.fullname,
                     userName: $scope.username,
                     email: $scope.email,

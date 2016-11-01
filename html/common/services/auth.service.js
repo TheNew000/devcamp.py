@@ -18,7 +18,7 @@
         };
 
         var getProfile = function (id) {
-            return http.get('http://162.243.19.103:5000/api/profile/' + id);
+            return http.get('http://dannyarango.com:7070/api/profile/' + id);
         };
 
         var isLoggedIn = function () {
@@ -37,11 +37,11 @@
         };
 
         var login = function (user) {
-            return $http.post('http://162.243.19.103:5000/api/login', user)
+            return $http.post('http://dannyarango.com:7070/api/login', user)
         };
 
         var register = function (user) {
-            return $http.post('http://162.243.19.103:5000/api/register', user)
+            return $http.post('http://dannyarango.com:7070/api/register', user)
         };
 
         return {
